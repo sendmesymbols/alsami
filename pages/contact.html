@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Al Sami Associates - Get in touch for construction, renovation, and allied services in Islamabad, Pakistan">
+    <title>Contact Us | Al Sami Associates</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Header will be loaded dynamically -->
+    <div id="header"></div>
+
+    <!-- Page Header -->
+    <section class="section bg-primary text-white" style="padding: 60px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1>Contact Us</h1>
+                    <p class="lead">Get in touch with us for your construction and allied service needs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Contact Form -->
+                <div class="col-lg-7">
+                    <div class="card p-4">
+                        <h3 class="mb-4">Send Us a Message</h3>
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">Phone Number <span class="text-danger">*</span></label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="service" class="form-label">Service Interest</label>
+                                    <select class="form-control" id="service" name="service">
+                                        <option value="">Select a service</option>
+                                        <option value="construction">Construction Services</option>
+                                        <option value="extension">Building Extensions</option>
+                                        <option value="renovation">Renovation Services</option>
+                                        <option value="civil">Civil Engineering</option>
+                                        <option value="waterproofing">Waterproofing</option>
+                                        <option value="heat-proofing">Heat Proofing</option>
+                                        <option value="pest-control">Pest Control</option>
+                                        <option value="cleaning">Cleaning Services</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label">Message <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label for="file" class="form-label">Attach File (Optional)</label>
+                                    <input type="file" class="form-control" id="file" name="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                                    <small class="text-muted">Max file size: 5MB</small>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-paper-plane me-2"></i>Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contact Info & Map -->
+                <div class="col-lg-5">
+                    <!-- Office Information -->
+                    <div class="card p-4 mb-4">
+                        <h3 class="mb-4">Office Information</h3>
+                        <div class="mb-3">
+                            <h5><i class="fas fa-map-marker-alt text-primary me-2"></i>Address</h5>
+                            <p class="ms-4">
+                                Shop # 03, Opposite Brooks Field School,<br>
+                                Colonel Amanullah Road,<br>
+                                Bhara Kahu, Islamabad, Pakistan
+                            </p>
+                        </div>
+                        <div class="mb-3">
+                            <h5><i class="fas fa-phone text-primary me-2"></i>Phone</h5>
+                            <p class="ms-4">
+                                <a href="tel:+923003432141">+92 300 3432141</a><br>
+                                <a href="tel:3147733211">314-773-3211</a>
+                            </p>
+                        </div>
+                        <div class="mb-3">
+                            <h5><i class="fas fa-envelope text-primary me-2"></i>Email</h5>
+                            <p class="ms-4">
+                                <a href="mailto:alsami.786@hotmail.com">alsami.786@hotmail.com</a>
+                            </p>
+                        </div>
+                        <div class="mb-3">
+                            <h5><i class="fab fa-whatsapp text-primary me-2"></i>WhatsApp</h5>
+                            <p class="ms-4">
+                                <a href="https://wa.me/923003432141" target="_blank">+92 300 3432141</a>
+                            </p>
+                        </div>
+                        <div class="mb-3">
+                            <h5><i class="fas fa-user text-primary me-2"></i>Contact Person</h5>
+                            <p class="ms-4">Mr. Abid Ali</p>
+                        </div>
+                    </div>
+
+                    <!-- Business Hours -->
+                    <div class="card p-4 mb-4">
+                        <h3 class="mb-4">Business Hours</h3>
+                        <div class="mb-2">
+                            <strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM
+                        </div>
+                        <div class="mb-2">
+                            <strong>Saturday:</strong> 9:00 AM - 2:00 PM
+                        </div>
+                        <div>
+                            <strong>Sunday:</strong> Closed
+                        </div>
+                    </div>
+
+                    <!-- Certifications -->
+                    <div class="card p-4">
+                        <h3 class="mb-4">Certifications</h3>
+                        <div class="mb-2">
+                            <strong>PEC #:</strong> C-6/58774
+                        </div>
+                        <div class="mb-2">
+                            <strong>MoFA Vendor #:</strong> 30322153
+                        </div>
+                        <div class="mb-2">
+                            <strong>AGPR Vendor #:</strong> 30322566
+                        </div>
+                        <div>
+                            <strong>NTN:</strong> A584941-4
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Maps Snapshot -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Find Us</h2>
+                <p class="section-subtitle">Visit our office in Bhara Kahu, Islamabad</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <!-- Google Maps Snapshot - Using Static Image -->
+                            <a href="https://www.google.com/maps/search/?api=1&query=Shop+03+Opposite+Brooks+Field+School+Colonel+Amanullah+Road+Bhara+Kahu+Islamabad" target="_blank" style="display: block;">
+                                <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200&h=400&fit=crop" 
+                                     alt="Al Sami Associates Location Map - Click to open in Google Maps" 
+                                     class="img-fluid w-100"
+                                     style="height: 400px; object-fit: cover;">
+                                <div class="p-3 text-center bg-light">
+                                    <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                                    <strong>Shop # 03, Opposite Brooks Field School, Colonel Amanullah Road, Bhara Kahu, Islamabad</strong><br>
+                                    <small class="text-muted">Click to open in Google Maps</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Company Profile -->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="mb-4">Download Our Company Profile</h2>
+                    <p class="lead mb-4">Get detailed information about our services, projects, and company credentials</p>
+                    <a href="../public/Al Sami Associates Pvt Ltd 2025.pdf" download class="btn btn-download btn-lg">
+                        <i class="fas fa-download me-2"></i>Download Company Profile PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer will be loaded dynamically -->
+    <div id="footer"></div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../js/script.js"></script>
+</body>
+</html>

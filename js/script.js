@@ -8,6 +8,7 @@ const projectsData = [];
 
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', function() {
+    loadComponents();
     initializeNavigation();
     initializeSwiper();
     initializeLazyLoading();
@@ -19,17 +20,175 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================
+// Component Loading (Header & Footer)
+// ============================================
+
+async function loadComponents() {
+    // Use pages/components for all pages
+    const isRootPage = !window.location.pathname.includes('/pages/');
+    
+    // Load header
+    const headerPlaceholder = document.getElementById('header');
+    if (headerPlaceholder) {
+        try {
+            const headerPath = isRootPage ? 'pages/components/header.html' : '../pages/components/header.html';
+            const response = await fetch(headerPath);
+            if (response.ok) {
+                const html = await response.text();
+                headerPlaceholder.innerHTML = html;
+                // Fix paths based on current page location
+                fixComponentPaths(isRootPage);
+                // Reinitialize navigation after header loads
+                setTimeout(() => {
+                    initializeNavigation();
+                    setActiveNavLink();
+                }, 100);
+            }
+        } catch (error) {
+            console.error('Error loading header:', error);
+        }
+    }
+    
+    // Load footer
+    const footerPlaceholder = document.getElementById('footer');
+    if (footerPlaceholder) {
+        try {
+            const footerPath = isRootPage ? 'pages/components/footer.html' : '../pages/components/footer.html';
+            const response = await fetch(footerPath);
+            if (response.ok) {
+                const html = await response.text();
+                footerPlaceholder.innerHTML = html;
+                // Fix footer paths based on current page location
+                fixFooterPaths(isRootPage);
+            }
+        } catch (error) {
+            console.error('Error loading footer:', error);
+        }
+    }
+}
+
+function fixComponentPaths(isRootPage) {
+    // Fix header links and images based on page location
+    const brandLink = document.querySelector('[data-nav-brand]');
+    const brandImg = document.querySelector('[data-nav-logo]');
+    const navLinks = document.querySelectorAll('[data-nav-link]');
+    
+    // Paths configuration
+    const paths = {
+        root: {
+            brand: 'index.html',
+            logo: 'public/images/logo.jpg',
+            home: 'index.html',
+            about: 'pages/about.html',
+            services: 'pages/services.html',
+            projects: 'pages/projects.html',
+            contact: 'pages/contact.html'
+        },
+        pages: {
+            brand: '../index.html',
+            logo: '../public/images/logo.jpg',
+            home: '../index.html',
+            about: 'about.html',
+            services: 'services.html',
+            projects: 'projects.html',
+            contact: 'contact.html'
+        }
+    };
+    
+    const pathSet = isRootPage ? paths.root : paths.pages;
+    
+    if (brandLink) brandLink.href = pathSet.brand;
+    if (brandImg) brandImg.src = pathSet.logo;
+    
+    navLinks.forEach(link => {
+        const linkType = link.getAttribute('data-nav-link');
+        if (linkType && pathSet[linkType]) {
+            link.href = pathSet[linkType];
+        }
+    });
+}
+
+function fixFooterPaths(isRootPage) {
+    // Fix footer links based on page location
+    const footerLinks = document.querySelectorAll('[data-footer-link]');
+    const footerPdf = document.querySelector('[data-footer-pdf]');
+    
+    const paths = {
+        root: {
+            home: 'index.html',
+            about: 'pages/about.html',
+            services: 'pages/services.html',
+            projects: 'pages/projects.html',
+            contact: 'pages/contact.html',
+            'services-construction': 'pages/services.html#construction',
+            'services-renovation': 'pages/services.html#renovation',
+            'services-waterproofing': 'pages/services.html#waterproofing',
+            'services-heat-proofing': 'pages/services.html#heat-proofing',
+            'services-pest-control': 'pages/services.html#pest-control',
+            pdf: 'public/Al Sami Associates Pvt Ltd 2025.pdf'
+        },
+        pages: {
+            home: '../index.html',
+            about: 'about.html',
+            services: 'services.html',
+            projects: 'projects.html',
+            contact: 'contact.html',
+            'services-construction': 'services.html#construction',
+            'services-renovation': 'services.html#renovation',
+            'services-waterproofing': 'services.html#waterproofing',
+            'services-heat-proofing': 'services.html#heat-proofing',
+            'services-pest-control': 'services.html#pest-control',
+            pdf: '../public/Al Sami Associates Pvt Ltd 2025.pdf'
+        }
+    };
+    
+    const pathSet = isRootPage ? paths.root : paths.pages;
+    
+    footerLinks.forEach(link => {
+        const linkType = link.getAttribute('data-footer-link');
+        if (linkType && pathSet[linkType]) {
+            link.href = pathSet[linkType];
+        }
+    });
+    
+    if (footerPdf && pathSet.pdf) {
+        footerPdf.href = pathSet.pdf;
+    }
+}
+
+function setActiveNavLink() {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        if (currentPath.includes('about') && href.includes('about')) {
+            link.classList.add('active');
+        } else if (currentPath.includes('services') && href.includes('services')) {
+            link.classList.add('active');
+        } else if (currentPath.includes('projects') && href.includes('projects')) {
+            link.classList.add('active');
+        } else if (currentPath.includes('contact') && href.includes('contact')) {
+            link.classList.add('active');
+        } else if ((currentPath === '/' || currentPath.includes('index')) && href.includes('index')) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// ============================================
 // Navigation Functions
 // ============================================
 
 function initializeNavigation() {
     const navbar = document.querySelector('.navbar');
+    if (!navbar) return; // Exit if navbar not loaded yet
     
     // Add scroll effect to navbar
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
+        if (navbar && window.scrollY > 50) {
             navbar.classList.add('scrolled');
-        } else {
+        } else if (navbar) {
             navbar.classList.remove('scrolled');
         }
     });
@@ -118,35 +277,72 @@ function loadSliderImages() {
     const sliderContainer = document.querySelector('.swiper-wrapper');
     if (!sliderContainer) return;
     
-    // Project folders with their display names
+    // Project folders with their display names and first available image
+    // Using folder names from public/images/projects - folder name = project name
     const projects = [
-        { name: 'MoFA House', folder: 'MoFA House', description: 'Complete construction and renovation project' },
-        { name: 'PCSIR Office', folder: 'PCSIR', description: 'Institutional building construction' },
-        { name: 'PCSIR Chairmen Office', folder: 'PCSIR Chairmen Office', description: 'Executive office construction' },
-        { name: 'Bank Al Falah', folder: 'Bank Al Falah', description: 'Commercial building renovation' },
-        { name: 'Minister Enclave', folder: 'MINISter Enclave', description: 'Government residential complex' },
-        { name: 'AIOU Construction', folder: 'AIOU Construction Page', description: 'University construction projects' },
-        { name: 'DHA - II', folder: 'DHA - II', description: 'Infrastructure development' },
-        { name: 'PTV Data Center', folder: 'PTV', description: 'Data center construction' }
+        { 
+            name: 'MoFA House', 
+            folder: 'MoFA House', 
+            image: 'MOFA Houses (5).jpg',
+            description: 'Complete construction and renovation project for Ministry of Foreign Affairs' 
+        },
+        { 
+            name: 'PCSIR Office', 
+            folder: 'PCSIR', 
+            image: 'PCSIR OFfice (1).jpg',
+            description: 'Institutional building construction for Pakistan Council of Scientific and Industrial Research' 
+        },
+        { 
+            name: 'PCSIR Chairmen Office', 
+            folder: 'PCSIR Chairmen Office', 
+            image: 'IMG_20210706_100550_376.jpg',
+            description: 'Executive office construction and renovation project' 
+        },
+        { 
+            name: 'Bank Al Falah', 
+            folder: 'Bank Al Falah', 
+            image: 'Bank Al Falah (4).jpg',
+            description: 'Commercial building renovation and modernization' 
+        },
+        { 
+            name: 'Minister Enclave', 
+            folder: 'MINISter Enclave', 
+            image: 'IMG_20240512_085006_972.jpg',
+            description: 'Government residential complex construction' 
+        },
+        { 
+            name: 'AIOU Construction', 
+            folder: 'AIOU Construction Page', 
+            image: 'AIOU Construction of Paper Storage Building (1).JPG',
+            description: 'Allama Iqbal Open University construction projects' 
+        },
+        { 
+            name: 'DHA - II', 
+            folder: 'DHA - II', 
+            image: 'DHA-II (6).jpg',
+            description: 'Defence Housing Authority infrastructure development' 
+        },
+        { 
+            name: 'PTV Data Center', 
+            folder: 'PTV', 
+            image: 'PTA DATA Center (1).jpg',
+            description: 'Pakistan Television data center construction' 
+        }
     ];
     
-    // Clear existing slides (except first placeholder)
-    const existingSlides = sliderContainer.querySelectorAll('.swiper-slide');
-    if (existingSlides.length > 0) {
-        existingSlides.forEach((slide, index) => {
-            if (index > 0) slide.remove(); // Keep first slide as fallback
-        });
-    }
+    // Clear existing slides
+    sliderContainer.innerHTML = '';
     
-    // Add project slides
-    projects.forEach((project, index) => {
+    // Add project slides with actual images from project folders
+    projects.forEach((project) => {
         const slide = document.createElement('div');
         slide.className = 'swiper-slide';
+        const imagePath = `public/images/projects/${project.folder}/${project.image}`;
         slide.innerHTML = `
-            <img src="https://images.unsplash.com/photo-${1486406146926 + index}?w=1200&h=600&fit=crop" 
+            <img src="${imagePath}" 
                  alt="${project.name}" 
                  loading="lazy"
-                 data-src="public/images/projects/${project.folder}">
+                 onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=600&fit=crop'">
             <div class="swiper-caption">
                 <h3>${project.name}</h3>
                 <p>${project.description}</p>
@@ -158,6 +354,9 @@ function loadSliderImages() {
     // Reinitialize Swiper if it exists
     if (swiperInstance) {
         swiperInstance.update();
+    } else {
+        // Initialize Swiper if not already initialized
+        initializeSwiper();
     }
 }
 
