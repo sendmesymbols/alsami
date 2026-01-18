@@ -16,10 +16,10 @@
     --text-dark: #1a1a1a;
     --text-light: #6b7280;
     --border-color: #e5e7eb;
-    
+
     /* Transitions */
     --transition: all 0.3s ease-in-out;
-    
+
     /* Spacing */
     --section-padding: 80px 0;
     --container-padding: 15px;
@@ -436,21 +436,21 @@ a:hover {
     h1 { font-size: 2rem; }
     h2 { font-size: 1.75rem; }
     h3 { font-size: 1.5rem; }
-    
+
     .section {
         padding: 50px 0;
     }
-    
+
     .navbar-nav {
         text-align: center;
     }
-    
+
     .swiper-button-next,
     .swiper-button-prev {
         width: 40px;
         height: 40px;
     }
-    
+
     .swiper-button-next::after,
     .swiper-button-prev::after {
         font-size: 16px;
