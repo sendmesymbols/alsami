@@ -214,8 +214,9 @@ function initializeSwiper() {
     
     swiperInstance = new Swiper('.swiper', {
         autoplay: {
-            delay: 5000,
+            delay: 6000,
             disableOnInteraction: false,
+            pauseOnMouseEnter: true,
         },
         loop: true,
         lazy: {
@@ -228,13 +229,30 @@ function initializeSwiper() {
         },
         pagination: {
             el: '.swiper-pagination',
-            type: 'progressbar',
+            type: 'bullets',
+            clickable: true,
         },
         effect: 'fade',
         fadeEffect: {
             crossFade: true
         },
-        speed: 1000,
+        speed: 1200,
+        grabCursor: true,
+        on: {
+            slideChange: function() {
+                // Reset Ken Burns animation on slide change
+                const activeSlide = this.slides[this.activeIndex];
+                if (activeSlide) {
+                    const img = activeSlide.querySelector('img');
+                    if (img) {
+                        img.style.animation = 'none';
+                        setTimeout(() => {
+                            img.style.animation = 'kenBurns 8s ease-out forwards';
+                        }, 10);
+                    }
+                }
+            }
+        }
     });
 }
 

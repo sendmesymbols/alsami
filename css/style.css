@@ -5,10 +5,14 @@
 /* --- MASTER COLOR CONFIGURATION --- */
 :root {
     /* Primary Brand Color - Dark Purple from Logo */
-    --primary-brand-color: #4A148C;  /* Main dark purple from logo */
-    --primary-dark: #3D0F6F;         /* Darker variant */
-    --primary-light: #7B2CBF;        /* Lighter variant */
-    --accent-color: #9D4EDD;         /* Light purple accent */
+    --primary-brand-color: #4A148C;
+    /* Main dark purple from logo */
+    --primary-dark: #3D0F6F;
+    /* Darker variant */
+    --primary-light: #7B2CBF;
+    /* Lighter variant */
+    --accent-color: #9D4EDD;
+    /* Light purple accent */
 
     /* Neutral Colors */
     --white: #ffffff;
@@ -41,19 +45,41 @@ body {
 }
 
 /* --- TYPOGRAPHY --- */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1rem;
     color: var(--text-dark);
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
 
 p {
     margin-bottom: 1rem;
@@ -271,6 +297,125 @@ a:hover {
     margin-bottom: 1rem;
 }
 
+/* --- SERVICES GRID SIDEBAR --- */
+.services-grid {
+    padding: 2rem 1.5rem;
+    position: relative;
+}
+
+.services-grid-hero {
+    display: flex;
+    flex-direction: column;
+}
+
+.services-grid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--primary-brand-color) 0%, var(--primary-dark) 100%);
+    opacity: 0.95;
+}
+
+.services-header {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.services-header h2 {
+    color: var(--white);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.service-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.service-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.875rem 1.25rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin-bottom: 0.65rem;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+    backdrop-filter: blur(10px);
+}
+
+.service-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-left-color: var(--accent-color);
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.service-item i {
+    color: var(--white);
+    font-size: 1.75rem;
+    min-width: 40px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.service-item:hover i {
+    color: var(--accent-color);
+    transform: scale(1.15);
+}
+
+.service-content {
+    flex: 1;
+}
+
+.service-content h5 {
+    color: var(--white);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 0.2rem 0;
+    line-height: 1.3;
+}
+
+.service-content p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.8rem;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Scrollbar styling for services grid */
+.services-grid::-webkit-scrollbar {
+    width: 6px;
+}
+
+.services-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.services-grid::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.services-grid::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Legacy service card styles (kept for other pages) */
 .service-card {
     text-align: center;
     padding: 2rem;
@@ -326,15 +471,72 @@ a:hover {
     height: 100%;
 }
 
+/* Hero Slider Specific Styles */
+.hero-slider {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-slider .swiper-slide {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ken Burns Effect - Slow Zoom Animation */
+.hero-slider .swiper-slide-active img {
+    animation: kenBurns 8s ease-out forwards;
+}
+
+@keyframes kenBurns {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+/* Fade transition effect */
+.hero-slider .swiper-slide {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.hero-slider .swiper-slide-active {
+    opacity: 1;
+}
+
 .swiper-slide {
     position: relative;
     overflow: hidden;
+}
+
+.swiper-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+    transition: var(--transition);
+}
+
+.swiper-slide:hover::before {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.3) 100%);
 }
 
 .swiper-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.swiper-slide:hover img {
+    transform: scale(1.05);
 }
 
 .swiper-caption {
@@ -342,33 +544,97 @@ a:hover {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-    padding: 30px 20px 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%);
+    padding: 40px 30px 25px;
     color: var(--white);
+    z-index: 2;
+    border-left: 5px solid var(--accent-color);
+    transform: translateY(0);
+    transition: transform 0.4s ease;
+}
+
+.swiper-slide:not(.swiper-slide-active) .swiper-caption {
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.swiper-slide-active .swiper-caption {
+    animation: slideUpFade 0.6s ease-out forwards;
+}
+
+@keyframes slideUpFade {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .swiper-caption h3 {
     color: var(--white);
     margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .swiper-caption p {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
     margin: 0;
+    font-size: 1rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
+/* Modern Navigation Buttons */
 .swiper-button-next,
 .swiper-button-prev {
     color: var(--white);
-    background-color: rgba(74, 20, 140, 0.7);
-    width: 50px;
-    height: 50px;
+    background: rgba(74, 20, 140, 0.85);
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-    font-size: 20px;
+    content: '';
+    display: none;
+}
+
+.swiper-button-next i,
+.swiper-button-prev i {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background: var(--accent-color);
+    transform: scale(1.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 5px 20px rgba(157, 78, 221, 0.4);
+}
+
+/* Pagination Dots */
+.swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--accent-color);
+    width: 30px;
+    border-radius: 6px;
 }
 
 .swiper-pagination-progressbar {
@@ -409,9 +675,11 @@ a:hover {
     0% {
         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
     }
+
     70% {
         box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
     }
@@ -433,9 +701,17 @@ a:hover {
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.75rem; }
-    h3 { font-size: 1.5rem; }
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
 
     .section {
         padding: 50px 0;
@@ -454,6 +730,56 @@ a:hover {
     .swiper-button-next::after,
     .swiper-button-prev::after {
         font-size: 16px;
+    }
+
+    /* Hero section mobile adjustments */
+    .hero-section .col-lg-8,
+    .hero-section .col-lg-4 {
+        width: 100%;
+    }
+
+    .project-slider {
+        height: 400px !important;
+    }
+
+    .services-grid {
+        height: auto !important;
+        max-height: 500px;
+        padding: 1.5rem 1rem;
+    }
+
+    .services-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .service-item {
+        padding: 0.875rem 1rem;
+        gap: 0.75rem;
+    }
+
+    .service-item i {
+        font-size: 1.5rem;
+        min-width: 35px;
+    }
+
+    .service-content h5 {
+        font-size: 0.95rem;
+    }
+
+    .service-content p {
+        font-size: 0.8rem;
+    }
+
+    .swiper-caption {
+        padding: 25px 20px 15px;
+    }
+
+    .swiper-caption h3 {
+        font-size: 1.35rem;
+    }
+
+    .swiper-caption p {
+        font-size: 0.9rem;
     }
 }
 

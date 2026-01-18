@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Al Sami Associates Private Limited - Professional construction, renovation, waterproofing, and allied services in Islamabad, Rawalpindi Pakistan">
+    <meta name="description"
+        content="Al Sami Associates Private Limited - Professional construction, renovation, waterproofing, and allied services in Islamabad, Rawalpindi Pakistan">
     <title>Al Sami Associates | Construction, Renovation & Allied Services</title>
 
     <!-- Bootstrap 5 CSS -->
@@ -16,11 +18,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <!-- Header will be loaded dynamically -->
     <div id="header"></div>
@@ -29,114 +33,155 @@
     <section class="hero-section" style="padding: 0;">
         <div class="container-fluid">
             <div class="row g-0">
-                <!-- Left Side - Swiper Slider (60%) -->
-                <div class="col-lg-7">
-                    <div class="swiper project-slider" style="height: 600px;">
+                <!-- Left Side - Swiper Slider (70%) -->
+                <div class="col-lg-8">
+                    <div class="swiper project-slider hero-slider" style="height: 500px;">
                         <div class="swiper-wrapper">
                             <!-- Project slides - will be enhanced with actual project images -->
                             <!-- Project slides will be loaded dynamically from project folders -->
                         </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div class="swiper-button-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
                         <div class="swiper-pagination"></div>
                     </div>
                 </div>
 
-                <!-- Right Side - Services Grid (40%) -->
-                <div class="col-lg-5">
-                    <div class="services-grid p-4" style="height: 600px; overflow-y: auto; background: var(--light-bg);">
-                        <h2 class="mb-4 text-primary">Our Services</h2>
+                <!-- Right Side - Services Grid (30%) -->
+                <div class="col-lg-4">
+                    <div class="services-grid services-grid-hero"
+                        style="min-height: 500px; background: linear-gradient(135deg, var(--primary-brand-color) 0%, var(--primary-dark) 100%);">
+                        >
+                        <div class="services-header">
+                            <h2 class="mb-4">Our Services</h2>
+                        </div>
                         <div class="row g-3">
                             <!-- Al Sami Services -->
-                            <div class="col-md-6">
-                                <div class="service-card card">
-                                    <i class="fas fa-building"></i>
-                                    <h5>Construction Services</h5>
-                                    <p>Complete construction from map to finished building</p>
-                                    <a href="pages/services.html#construction" class="btn btn-outline btn-sm">Learn More</a>
-                                </div>
+                            <div class="col-12">
+                                <a href="pages/services.html#construction" class="service-item-link">
+                                    <div class="service-item">
+                                        <i class="fas fa-building"></i>
+                                        <div class="service-content">
+                                            <h5>Construction Services</h5>
+                                            <p>Complete construction from map to finished building</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="col-md-6">
-                                <div class="service-card card">
-                                    <i class="fas fa-tools"></i>
-                                    <h5>Building Extensions</h5>
-                                    <p>Structural extensions and additions</p>
-                                    <a href="pages/services.html#extensions" class="btn btn-outline btn-sm">Learn More</a>
-                                </div>
+                            <div class="col-12">
+                                <a href="pages/services.html#extensions" class="service-item-link">
+                                    <div class="service-item">
+                                        <i class="fas fa-tools"></i>
+                                        <div class="service-content">
+                                            <h5>Building Extensions</h5>
+                                            <p>Structural extensions and additions</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="col-md-6">
-                                <div class="service-card card">
-                                    <i class="fas fa-hammer"></i>
-                                    <h5>Renovation Services</h5>
-                                    <p>Building renovation and remodeling</p>
-                                    <a href="pages/services.html#renovation" class="btn btn-outline btn-sm">Learn More</a>
-                                </div>
+                            <div class="col-12">
+                                <a href="pages/services.html#renovation" class="service-item-link">
+                                    <div class="service-item">
+                                        <i class="fas fa-hammer"></i>
+                                        <div class="service-content">
+                                            <h5>Renovation Services</h5>
+                                            <p>Building renovation and remodeling</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="col-md-6">
-                                <div class="service-card card">
-                                    <i class="fas fa-road"></i>
-                                    <h5>Civil Engineering</h5>
-                                    <p>Infrastructure and civil works</p>
-                                    <a href="pages/services.html#civil" class="btn btn-outline btn-sm">Learn More</a>
-                                </div>
+                            <div class="col-12">
+                                <a href="pages/services.html#civil" class="service-item-link">
+                                    <div class="service-item">
+                                        <i class="fas fa-road"></i>
+                                        <div class="service-content">
+                                            <h5>Civil Engineering</h5>
+                                            <p>Infrastructure and civil works</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="col-md-6">
-                                <div class="service-card card">
-                                    <i class="fas fa-landmark"></i>
-                                    <h5>Government Buildings</h5>
-                                    <p>Construction and renovation of government facilities</p>
-                                    <a href="pages/services.html#government" class="btn btn-outline btn-sm">Learn More</a>
-                                </div>
+                            <div class="col-12">
+                                <a href="pages/services.html#government" class="service-item-link">
+                                    <div class="service-item">
+                                        <i class="fas fa-landmark"></i>
+                                        <div class="service-content">
+                                            <h5>Government Buildings</h5>
+                                            <p>Construction and renovation of government facilities</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="col-md-6">
-                                <div class="service-card card">
-                                    <i class="fas fa-school"></i>
-                                    <h5>Institutional Buildings</h5>
-                                    <p>Schools, offices, and institutional construction</p>
-                                    <a href="pages/services.html#institutional" class="btn btn-outline btn-sm">Learn More</a>
-                                </div>
+                            <div class="col-12">
+                                <a href="pages/services.html#institutional" class="service-item-link">
+                                    <div class="service-item">
+                                        <i class="fas fa-school"></i>
+                                        <div class="service-content">
+                                            <h5>Institutional Buildings</h5>
+                                            <p>Schools, offices, and institutional construction</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
 
                             <!-- Kaufmann Services -->
-                            <div class="col-md-6">
-                                <div class="service-card card">
-                                    <i class="fas fa-tint"></i>
-                                    <h5>Waterproofing</h5>
-                                    <p>Roof, basement, terrace waterproofing</p>
-                                    <a href="pages/services.html#waterproofing" class="btn btn-outline btn-sm">Learn More</a>
-                                </div>
+                            <div class="col-12">
+                                <a href="pages/services.html#waterproofing" class="service-item-link">
+                                    <div class="service-item">
+                                        <i class="fas fa-tint"></i>
+                                        <div class="service-content">
+                                            <h5>Waterproofing</h5>
+                                            <p>Roof, basement, terrace waterproofing</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="col-md-6">
-                                <div class="service-card card">
-                                    <i class="fas fa-sun"></i>
-                                    <h5>Heat Proofing</h5>
-                                    <p>Thermal insulation solutions</p>
-                                    <a href="pages/services.html#heat-proofing" class="btn btn-outline btn-sm">Learn More</a>
-                                </div>
+                            <div class="col-12">
+                                <a href="pages/services.html#heat-proofing" class="service-item-link">
+                                    <div class="service-item">
+                                        <i class="fas fa-sun"></i>
+                                        <div class="service-content">
+                                            <h5>Heat Proofing</h5>
+                                            <p>Thermal insulation solutions</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="col-md-6">
-                                <div class="service-card card">
-                                    <i class="fas fa-bug"></i>
-                                    <h5>Pest Control</h5>
-                                    <p>Termite, bed bug, cockroach, lizard control</p>
-                                    <a href="pages/services.html#pest-control" class="btn btn-outline btn-sm">Learn More</a>
-                                </div>
+                            <div class="col-12">
+                                <a href="pages/services.html#pest-control" class="service-item-link">
+                                    <div class="service-item">
+                                        <i class="fas fa-bug"></i>
+                                        <div class="service-content">
+                                            <h5>Pest Control</h5>
+                                            <p>Termite, bed bug, cockroach, lizard control</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="col-md-6">
-                                <div class="service-card card">
-                                    <i class="fas fa-spray-can"></i>
-                                    <h5>Water Tank Cleaning</h5>
-                                    <p>Professional tank cleaning services</p>
-                                    <a href="pages/services.html#tank-cleaning" class="btn btn-outline btn-sm">Learn More</a>
-                                </div>
+                            <div class="col-12">
+                                <a href="pages/services.html#tank-cleaning" class="service-item-link">
+                                    <div class="service-item">
+                                        <i class="fas fa-spray-can"></i>
+                                        <div class="service-content">
+                                            <h5>Water Tank Cleaning</h5>
+                                            <p>Professional tank cleaning services</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="col-md-6">
-                                <div class="service-card card">
-                                    <i class="fas fa-couch"></i>
-                                    <h5>Sofa-Carpet Cleaning</h5>
-                                    <p>Upholstery and carpet cleaning</p>
-                                    <a href="pages/services.html#cleaning" class="btn btn-outline btn-sm">Learn More</a>
-                                </div>
+                            <div class="col-12">
+                                <a href="pages/services.html#cleaning" class="service-item-link">
+                                    <div class="service-item">
+                                        <i class="fas fa-couch"></i>
+                                        <div class="service-content">
+                                            <h5>Sofa-Carpet Cleaning</h5>
+                                            <p>Upholstery and carpet cleaning</p>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -221,7 +266,8 @@
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop" class="card-img-top" alt="Project" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop"
+                            class="card-img-top" alt="Project" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title">MoFA House</h5>
                             <p class="card-text">Complete construction and renovation project</p>
@@ -231,7 +277,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop" class="card-img-top" alt="Project" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop"
+                            class="card-img-top" alt="Project" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title">PCSIR Office</h5>
                             <p class="card-text">Institutional building construction</p>
@@ -241,7 +288,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&h=400&fit=crop" class="card-img-top" alt="Project" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&h=400&fit=crop"
+                            class="card-img-top" alt="Project" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title">Bank Al Falah</h5>
                             <p class="card-text">Commercial building renovation</p>
@@ -331,4 +379,5 @@
     <!-- Custom JS -->
     <script src="js/script.js"></script>
 </body>
+
 </html>
