@@ -795,8 +795,26 @@ a:hover {
         font-size: 0.8rem;
     }
 
-    .swiper-caption {
-        padding: 25px 20px 15px;
+
+    /* --- HOVER DROPDOWN SUPPORT --- */
+    @media (min-width: 992px) {
+        .navbar .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0;
+            animation: fadeIn 0.3s ease;
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .swiper-caption h3 {
@@ -819,4 +837,22 @@ a:hover {
 
 .shadow-custom {
     box-shadow: 0 5px 15px rgba(74, 20, 140, 0.2);
+} 
+/* Nested Dropdown Support */
+@media (min-width: 992px) {
+    .dropdown-menu .dropend:hover > .dropdown-menu {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        margin-top: -1px;
+    }
+    .dropdown-menu .dropend .dropdown-toggle::after {
+        vertical-align: 0;
+        margin-left: .5em;
+        border-top: .3em solid transparent;
+        border-right: 0;
+        border-bottom: .3em solid transparent;
+        border-left: .3em solid;
+    }
 }

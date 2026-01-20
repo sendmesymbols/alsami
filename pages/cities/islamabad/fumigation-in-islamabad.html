@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fumigation and Pest Control Services in Islamabad - Kaufmann Enterprises. ">
+    <title>Pest Control Fumigation in Islamabad | Al Sami Associates</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <section class="section bg-primary text-white" style="padding: 60px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1>Fumigation & Pest Control in Islamabad</h1>
+                    <p class="lead">Professional and Safe Pest Control Solutions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>Fumigation Services / Pest Control Services in Islamabad</h2>
+                    <p>Kaufmann Enterprises Pvt. Ltd. provides the best pest Fumigation and Pest Control Services in
+                        Islamabad. Ant Fumigation / Pest Control process is something that requires expertise and skills
+                        because it involves using a lethal gas to exterminate pests within an enclosed space. Therefore,
+                        it is important to choose a reliable company having diversified experience in the field of
+                        Fumigation for pest control.</p>
+                    <p>The expert team of Kaufmann Enterprises Pvt. Ltd. is the best fumigation company that is capable
+                        of providing top quality Fumigation Services / Spray for all Pests / Pest Control Services while
+                        incorporating all precautionary and safety measures.</p>
+
+                    <h3>Specific Services We Offer:</h3>
+                    <ul>
+                        <li><strong>Cockroach Control:</strong> Our cockroach fumigation services are designed to cater
+                            to your needs in the most efficient way possible.</li>
+                        <li><strong>Mosquito Control:</strong> Effective and odorless mosquito control services reducing
+                            the risk of Dengue and Malaria.</li>
+                        <li><strong>Lizard Control:</strong> Using safe imported chemicals to eliminate lizards from
+                            your home.</li>
+                        <li><strong>Rodent Control:</strong> Premium quality rodent control services including gap
+                            analysis and baiting.</li>
+                        <li><strong>Bed Bugs Control:</strong> Effective bed bug removal treatments ensuring peaceful
+                            sleep.</li>
+                    </ul>
+
+                    <div class="alert alert-info mt-4">
+                        <h4>Contact Us for Fumigation in Islamabad</h4>
+                        <p>We provide professionally managed services with guaranteed results.</p>
+                        <a href="../../../pages/contact.html" class="btn btn-primary">Get Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Fix for 3 levels deep: pages/cities/islamabad/fumigation.html
+        fetch('../../../pages/components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+                const navLinks = document.querySelectorAll('#header a');
+                navLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href && !href.startsWith('http') && !href.startsWith('#')) {
+                        if (href === 'index.html') {
+                            link.setAttribute('href', '../../../index.html');
+                        } else if (href.startsWith('pages/')) {
+                            link.setAttribute('href', '../../../' + href);
+                        }
+                    }
+                });
+            });
+
+        fetch('../../../pages/components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</body>
+
+</html>

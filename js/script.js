@@ -7,7 +7,7 @@ let swiperInstance = null;
 const projectsData = [];
 
 // Initialize on DOM load
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     loadComponents();
     initializeNavigation();
     initializeSwiper();
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 async function loadComponents() {
     // Use pages/components for all pages
     const isRootPage = !window.location.pathname.includes('/pages/');
-    
+
     // Load header
     const headerPlaceholder = document.getElementById('header');
     if (headerPlaceholder) {
@@ -48,7 +48,7 @@ async function loadComponents() {
             console.error('Error loading header:', error);
         }
     }
-    
+
     // Load footer
     const footerPlaceholder = document.getElementById('footer');
     if (footerPlaceholder) {
@@ -72,7 +72,7 @@ function fixComponentPaths(isRootPage) {
     const brandLink = document.querySelector('[data-nav-brand]');
     const brandImg = document.querySelector('[data-nav-logo]');
     const navLinks = document.querySelectorAll('[data-nav-link]');
-    
+
     // Paths configuration
     const paths = {
         root: {
@@ -81,6 +81,7 @@ function fixComponentPaths(isRootPage) {
             home: 'index.html',
             about: 'pages/about.html',
             services: 'pages/services.html',
+            products: 'pages/products.html',
             projects: 'pages/projects.html',
             contact: 'pages/contact.html'
         },
@@ -90,20 +91,32 @@ function fixComponentPaths(isRootPage) {
             home: '../index.html',
             about: 'about.html',
             services: 'services.html',
+            products: 'products.html',
             projects: 'projects.html',
             contact: 'contact.html'
         }
     };
-    
+
     const pathSet = isRootPage ? paths.root : paths.pages;
-    
+
     if (brandLink) brandLink.href = pathSet.brand;
     if (brandImg) brandImg.src = pathSet.logo;
-    
+
     navLinks.forEach(link => {
         const linkType = link.getAttribute('data-nav-link');
         if (linkType && pathSet[linkType]) {
             link.href = pathSet[linkType];
+        }
+    });
+
+    // Fix dropdown links (which are hardcoded in header.html)
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+    dropdownItems.forEach(item => {
+        const href = item.getAttribute('href');
+        if (href && href.startsWith('pages/') && !isRootPage) {
+            // If we are in a subpage (isRootPage is false), remove 'pages/' prefix
+            // e.g. 'pages/heat-proofing.html' becomes 'heat-proofing.html'
+            item.href = href.replace('pages/', '');
         }
     });
 }
@@ -112,7 +125,7 @@ function fixFooterPaths(isRootPage) {
     // Fix footer links based on page location
     const footerLinks = document.querySelectorAll('[data-footer-link]');
     const footerPdf = document.querySelector('[data-footer-pdf]');
-    
+
     const paths = {
         root: {
             home: 'index.html',
@@ -141,16 +154,16 @@ function fixFooterPaths(isRootPage) {
             pdf: '../public/Al Sami Associates Pvt Ltd 2025.pdf'
         }
     };
-    
+
     const pathSet = isRootPage ? paths.root : paths.pages;
-    
+
     footerLinks.forEach(link => {
         const linkType = link.getAttribute('data-footer-link');
         if (linkType && pathSet[linkType]) {
             link.href = pathSet[linkType];
         }
     });
-    
+
     if (footerPdf && pathSet.pdf) {
         footerPdf.href = pathSet.pdf;
     }
@@ -183,21 +196,21 @@ function setActiveNavLink() {
 function initializeNavigation() {
     const navbar = document.querySelector('.navbar');
     if (!navbar) return; // Exit if navbar not loaded yet
-    
+
     // Add scroll effect to navbar
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         if (navbar && window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else if (navbar) {
             navbar.classList.remove('scrolled');
         }
     });
-    
+
     // Set active nav link based on current page
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
     navLinks.forEach(link => {
-        if (link.getAttribute('href') === currentPath || 
+        if (link.getAttribute('href') === currentPath ||
             (currentPath === '/' && link.getAttribute('href') === 'index.html')) {
             link.classList.add('active');
         }
@@ -211,7 +224,7 @@ function initializeNavigation() {
 function initializeSwiper() {
     const swiperContainer = document.querySelector('.swiper');
     if (!swiperContainer) return;
-    
+
     swiperInstance = new Swiper('.swiper', {
         autoplay: {
             delay: 6000,
@@ -239,7 +252,7 @@ function initializeSwiper() {
         speed: 1200,
         grabCursor: true,
         on: {
-            slideChange: function() {
+            slideChange: function () {
                 // Reset Ken Burns animation on slide change
                 const activeSlide = this.slides[this.activeIndex];
                 if (activeSlide) {
@@ -278,7 +291,7 @@ async function loadProjectsData() {
         'PCST',
         'PTV'
     ];
-    
+
     projectFolders.forEach(folder => {
         projectsData.push({
             name: folder,
@@ -286,7 +299,7 @@ async function loadProjectsData() {
             images: []
         });
     });
-    
+
     // Load images for slider
     loadSliderImages();
 }
@@ -294,63 +307,63 @@ async function loadProjectsData() {
 function loadSliderImages() {
     const sliderContainer = document.querySelector('.swiper-wrapper');
     if (!sliderContainer) return;
-    
+
     // Project folders with their display names and first available image
     // Using folder names from public/images/projects - folder name = project name
     const projects = [
-        { 
-            name: 'MoFA House', 
-            folder: 'MoFA House', 
+        {
+            name: 'MoFA House',
+            folder: 'MoFA House',
             image: 'MOFA Houses (5).jpg',
-            description: 'Complete construction and renovation project for Ministry of Foreign Affairs' 
+            description: 'Complete construction and renovation project for Ministry of Foreign Affairs'
         },
-        { 
-            name: 'PCSIR Office', 
-            folder: 'PCSIR', 
+        {
+            name: 'PCSIR Office',
+            folder: 'PCSIR',
             image: 'PCSIR OFfice (1).jpg',
-            description: 'Institutional building construction for Pakistan Council of Scientific and Industrial Research' 
+            description: 'Institutional building construction for Pakistan Council of Scientific and Industrial Research'
         },
-        { 
-            name: 'PCSIR Chairmen Office', 
-            folder: 'PCSIR Chairmen Office', 
+        {
+            name: 'PCSIR Chairmen Office',
+            folder: 'PCSIR Chairmen Office',
             image: 'IMG_20210706_100550_376.jpg',
-            description: 'Executive office construction and renovation project' 
+            description: 'Executive office construction and renovation project'
         },
-        { 
-            name: 'Bank Al Falah', 
-            folder: 'Bank Al Falah', 
+        {
+            name: 'Bank Al Falah',
+            folder: 'Bank Al Falah',
             image: 'Bank Al Falah (4).jpg',
-            description: 'Commercial building renovation and modernization' 
+            description: 'Commercial building renovation and modernization'
         },
-        { 
-            name: 'Minister Enclave', 
-            folder: 'MINISter Enclave', 
+        {
+            name: 'Minister Enclave',
+            folder: 'MINISter Enclave',
             image: 'IMG_20240512_085006_972.jpg',
-            description: 'Government residential complex construction' 
+            description: 'Government residential complex construction'
         },
-        { 
-            name: 'AIOU Construction', 
-            folder: 'AIOU Construction Page', 
+        {
+            name: 'AIOU Construction',
+            folder: 'AIOU Construction Page',
             image: 'AIOU Construction of Paper Storage Building (1).JPG',
-            description: 'Allama Iqbal Open University construction projects' 
+            description: 'Allama Iqbal Open University construction projects'
         },
-        { 
-            name: 'DHA - II', 
-            folder: 'DHA - II', 
+        {
+            name: 'DHA - II',
+            folder: 'DHA - II',
             image: 'DHA-II (6).jpg',
-            description: 'Defence Housing Authority infrastructure development' 
+            description: 'Defence Housing Authority infrastructure development'
         },
-        { 
-            name: 'PTV Data Center', 
-            folder: 'PTV', 
+        {
+            name: 'PTV Data Center',
+            folder: 'PTV',
             image: 'PTA DATA Center (1).jpg',
-            description: 'Pakistan Television data center construction' 
+            description: 'Pakistan Television data center construction'
         }
     ];
-    
+
     // Clear existing slides
     sliderContainer.innerHTML = '';
-    
+
     // Add project slides with actual images from project folders
     projects.forEach((project) => {
         const slide = document.createElement('div');
@@ -368,7 +381,7 @@ function loadSliderImages() {
         `;
         sliderContainer.appendChild(slide);
     });
-    
+
     // Reinitialize Swiper if it exists
     if (swiperInstance) {
         swiperInstance.update();
@@ -405,7 +418,7 @@ function initializeFormHandlers() {
     if (contactForm) {
         contactForm.addEventListener('submit', handleFormSubmit);
     }
-    
+
     // Quote form handlers
     const quoteForms = document.querySelectorAll('.quote-form');
     quoteForms.forEach(form => {
@@ -415,25 +428,25 @@ function initializeFormHandlers() {
 
 function handleFormSubmit(e) {
     e.preventDefault();
-    
+
     const form = e.target;
     const formData = new FormData(form);
-    
+
     // Basic validation
     const name = formData.get('name');
     const email = formData.get('email');
     const message = formData.get('message');
-    
+
     if (!name || !email || !message) {
         showAlert('Please fill in all required fields.', 'error');
         return;
     }
-    
+
     if (!isValidEmail(email)) {
         showAlert('Please enter a valid email address.', 'error');
         return;
     }
-    
+
     // Here you would typically send the form data to a server
     // For now, we'll just show a success message
     showAlert('Thank you for your message! We will get back to you soon.', 'success');
@@ -468,9 +481,9 @@ function showAlert(message, type) {
         box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     `;
     alert.textContent = message;
-    
+
     document.body.appendChild(alert);
-    
+
     setTimeout(() => {
         alert.style.opacity = '0';
         alert.style.transition = 'opacity 0.3s';
@@ -484,10 +497,10 @@ function showAlert(message, type) {
 
 function initializeSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href === '#' || href === '') return;
-            
+
             const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
@@ -507,23 +520,23 @@ function initializeSmoothScroll() {
 function initializeMobileMenu() {
     const navbarToggler = document.querySelector('.navbar-toggler');
     const navbarCollapse = document.querySelector('.navbar-collapse');
-    
+
     if (navbarToggler && navbarCollapse) {
-        navbarToggler.addEventListener('click', function() {
+        navbarToggler.addEventListener('click', function () {
             navbarCollapse.classList.toggle('show');
         });
-        
+
         // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (!navbarToggler.contains(e.target) && !navbarCollapse.contains(e.target)) {
                 navbarCollapse.classList.remove('show');
             }
         });
-        
+
         // Close menu when clicking a link
         const navLinks = navbarCollapse.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function () {
                 navbarCollapse.classList.remove('show');
             });
         });
@@ -536,12 +549,12 @@ function initializeMobileMenu() {
 
 function initializePDFDownload() {
     const downloadButtons = document.querySelectorAll('.btn-download-pdf');
-    
+
     downloadButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
+        button.addEventListener('click', function (e) {
             e.preventDefault();
             const pdfPath = 'public/Al Sami Associates Pvt Ltd_ 2025.pdf';
-            
+
             // Create a temporary link and trigger download
             const link = document.createElement('a');
             link.href = pdfPath;
@@ -565,10 +578,10 @@ function calculateEstimate(area, serviceType) {
         'construction': 150,
         'renovation': 100
     };
-    
+
     const rate = pricePerSqFt[serviceType] || 75;
     const total = basePrice + (area * rate);
-    
+
     return {
         min: total * 0.9,
         max: total * 1.1
@@ -599,7 +612,7 @@ async function loadProjectImages(projectFolder) {
     // This function will load actual images from project folders
     // For now, returns placeholder structure
     const projectImages = [];
-    
+
     // Project folder names
     const folders = [
         'AIOU Construction Page',
@@ -616,12 +629,12 @@ async function loadProjectImages(projectFolder) {
         'PCST',
         'PTV'
     ];
-    
+
     // Match folder name
-    const matchedFolder = folders.find(f => 
+    const matchedFolder = folders.find(f =>
         f.toLowerCase().replace(/\s+/g, '') === projectFolder.toLowerCase().replace(/\s+/g, '')
     );
-    
+
     if (matchedFolder) {
         // In production, this would fetch actual images from the folder
         // For now, return placeholder structure
@@ -630,7 +643,7 @@ async function loadProjectImages(projectFolder) {
             images: [] // Will be populated with actual image paths
         };
     }
-    
+
     return null;
 }
 

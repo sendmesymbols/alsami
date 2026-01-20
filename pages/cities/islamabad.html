@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Services in Islamabad - Kaufmann Enterprises. Waterproofing, Heat Proofing, Pest Control services.">
+    <title>Services in Islamabad | Al Sami Associates</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <section class="section bg-primary text-white" style="padding: 60px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1>Services in Islamabad</h1>
+                    <p class="lead">Premium Waterproofing and Pest Control Services in the Capital</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>We Cover Major Cities of Pakistan</h2>
+                    <p>Kaufmann Enterprises Pvt. Ltd. has head quarters in Islamabad and Rawalpindi. We cover many other
+                        cities of Pakistan such as Lahore and Karachi through our regional offices.</p>
+                    <p>The highly professional and experienced staff of Kaufmann Enterprises Pvt. Ltd. makes our premium
+                        quality services and products available in all areas of Pakistan.</p>
+
+                    <h3>Available Services in Islamabad</h3>
+                    <div class="list-group mb-4">
+                        <a href="islamabad/fumigation-in-islamabad.html"
+                            class="list-group-item list-group-item-action">Fumigation Services / Pest Control</a>
+                        <a href="islamabad/heat-proofing-in-islamabad.html"
+                            class="list-group-item list-group-item-action">Heat Proofing</a>
+                        <a href="islamabad/termite-control-in-islamabad.html"
+                            class="list-group-item list-group-item-action">Termite Control</a>
+                        <a href="islamabad/water-tank-cleaning-in-islamabad.html"
+                            class="list-group-item list-group-item-action">Water Tank Cleaning</a>
+                        <a href="islamabad/water-proofing-in-islamabad.html"
+                            class="list-group-item list-group-item-action">Waterproofing</a>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <h4>Call For a Quote:</h4>
+                        <p><strong>(RWP/ISB) 0300-5011991 0300-8556571</strong></p>
+                        <a href="../../pages/contact.html" class="btn btn-primary">Get Free Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Adjust script path for deep nesting -->
+    <script>
+        // Helper to load header/footer with correct path
+        fetch('../../pages/components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+                // Fix relative links in header if necessary
+                const navLinks = document.querySelectorAll('#header a');
+                navLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href && !href.startsWith('http') && !href.startsWith('#')) {
+                        // If link is like "pages/..." and we are in "pages/cities/islamabad.html" (depth 2 from pages root)
+                        // We need to go up 2 levels --> "../../"
+                        // But wait, the links in header are "pages/..." relative to ROOT.
+                        // So from "pages/cities/islamabad.html" (which is effectively Root/pages/cities/),
+                        // "pages/services.html" would look for "Root/pages/cities/pages/services.html" -> WRONG.
+                        // We need "../../pages/services.html".
+
+                        // Simple fix: if link starts with "pages/", replace with "../../pages/"
+                        // if link is "index.html", replace with "../../index.html"
+
+                        if (href === 'index.html') {
+                            link.setAttribute('href', '../../index.html');
+                        } else if (href.startsWith('pages/')) {
+                            link.setAttribute('href', '../../' + href);
+                        }
+                    }
+                });
+            });
+
+        fetch('../../pages/components/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</body>
+
+</html>
