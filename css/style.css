@@ -305,6 +305,17 @@ a:hover {
     padding-left: 24px;
 }
 
+.dropdown-menu .dropdown-item.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.dropdown-menu .dropdown-item.dropdown-toggle::after {
+    margin-left: auto;
+}
+
 /* Hover support for Desktop */
 @media (min-width: 992px) {
     .dropdown:hover > .dropdown-menu {
@@ -424,7 +435,7 @@ a:hover {
     flex-direction: column;
     height: 100%;
     overflow: hidden;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 1rem;
 }
 
@@ -465,6 +476,20 @@ a:hover {
     border: 1px solid rgba(15, 23, 42, 0.08);
     height: 100%;
     box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    bottom: 12px;
+    width: 4px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, var(--primary-brand-color), var(--primary-light));
+    opacity: 0.7;
 }
 
 .service-item:hover {
@@ -479,6 +504,7 @@ a:hover {
     min-width: 28px;
     text-align: center;
     transition: var(--transition);
+    margin-left: 4px;
 }
 
 .service-item:hover i {
