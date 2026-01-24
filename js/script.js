@@ -274,112 +274,50 @@ function initializeSwiper() {
 // ============================================
 
 async function loadProjectsData() {
-    // This will be populated with actual project data
-    // For now, we'll create a structure based on folder names
-    const projectFolders = [
-        'AIOU Construction Page',
-        'Bank Al Falah',
-        'CABI Mardan',
-        'DHA - II',
-        'Girls Guide Association',
-        'MINISter Enclave',
-        'MoFA House',
-        'NCP',
-        'NIC',
-        'PCSIR',
-        'PCSIR Chairmen Office',
-        'PCST',
-        'PTV'
-    ];
-
-    projectFolders.forEach(folder => {
-        projectsData.push({
-            name: folder,
-            folder: folder,
-            images: []
+    // Populate projectsData from the global configuration
+    if (typeof window.PROJECTS_DATA !== 'undefined') {
+        Object.values(window.PROJECTS_DATA).forEach(project => {
+            projectsData.push(project);
         });
-    });
+    }
 
     // Load images for slider
     loadSliderImages();
+
+    // Load projects grid if on projects page
+    loadProjectsGrid();
 }
 
 function loadSliderImages() {
     const sliderContainer = document.querySelector('.swiper-wrapper');
     if (!sliderContainer) return;
 
-    // Project folders with their display names and first available image
-    // Using folder names from public/images/projects - folder name = project name
-    const projects = [
-        {
-            name: 'MoFA House',
-            folder: 'MoFA House',
-            image: 'MOFA Houses (5).jpg',
-            description: 'Complete construction and renovation project for Ministry of Foreign Affairs'
-        },
-        {
-            name: 'PCSIR Office',
-            folder: 'PCSIR',
-            image: 'PCSIR OFfice (1).jpg',
-            description: 'Institutional building construction for Pakistan Council of Scientific and Industrial Research'
-        },
-        {
-            name: 'PCSIR Chairmen Office',
-            folder: 'PCSIR Chairmen Office',
-            image: 'IMG_20210706_100550_376.jpg',
-            description: 'Executive office construction and renovation project'
-        },
-        {
-            name: 'Bank Al Falah',
-            folder: 'Bank Al Falah',
-            image: 'Bank Al Falah (4).jpg',
-            description: 'Commercial building renovation and modernization'
-        },
-        {
-            name: 'Minister Enclave',
-            folder: 'MINISter Enclave',
-            image: 'IMG_20240512_085006_972.jpg',
-            description: 'Government residential complex construction'
-        },
-        {
-            name: 'AIOU Construction',
-            folder: 'AIOU Construction Page',
-            image: 'AIOU Construction of Paper Storage Building (1).JPG',
-            description: 'Allama Iqbal Open University construction projects'
-        },
-        {
-            name: 'DHA - II',
-            folder: 'DHA - II',
-            image: 'DHA-II (6).jpg',
-            description: 'Defence Housing Authority infrastructure development'
-        },
-        {
-            name: 'PTV Data Center',
-            folder: 'PTV',
-            image: 'PTA DATA Center (1).jpg',
-            description: 'Pakistan Television data center construction'
-        }
-    ];
-
     // Clear existing slides
     sliderContainer.innerHTML = '';
 
-    // Add project slides with actual images from project folders
-    projects.forEach((project) => {
-        const slide = document.createElement('div');
-        slide.className = 'swiper-slide';
-        const imagePath = `public/images/projects/${project.folder}/${project.image}`;
-        slide.innerHTML = `
-            <img src="${imagePath}" 
-                 alt="${project.name}" 
-                 loading="lazy"
-                 onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=600&fit=crop'">
-            <div class="swiper-caption">
-                <h3>${project.name}</h3>
-                <p>${project.description}</p>
-            </div>
-        `;
-        sliderContainer.appendChild(slide);
+    // Add slides for each project (up to 4 images per project)
+    projectsData.forEach((project) => {
+        // Take first 4 images, or all if less than 4
+        const displayImages = project.images.slice(0, 4);
+        
+        displayImages.forEach(imageName => {
+            const slide = document.createElement('div');
+            slide.className = 'swiper-slide';
+            const imagePath = `public/images/projects/${project.folder}/${imageName}`;
+            
+            slide.innerHTML = `
+                <img src="${imagePath}" 
+                     alt="${project.name}" 
+                     loading="lazy"
+                     onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=600&fit=crop'">
+                <div class="swiper-caption animated-caption">
+                    <h3 class="slide-title">${project.name}</h3>
+                    <p class="slide-desc">${project.description}</p>
+                    <span class="badge bg-primary mt-2">${project.category.toUpperCase()}</span>
+                </div>
+            `;
+            sliderContainer.appendChild(slide);
+        });
     });
 
     // Reinitialize Swiper if it exists
@@ -390,6 +328,133 @@ function loadSliderImages() {
         initializeSwiper();
     }
 }
+
+function loadProjectsGrid() {
+    const grid = document.getElementById('projectsGrid');
+    if (!grid) return;
+
+    grid.innerHTML = '';
+
+    projectsData.forEach(project => {
+        const col = document.createElement('div');
+        col.className = 'col-md-4 project-item';
+        col.setAttribute('data-category', project.category);
+        
+        // Use first image as thumbnail, or placeholder
+        const thumbnail = project.images.length > 0 
+            ? `../public/images/projects/${project.folder}/${project.images[0]}`
+            : 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop';
+
+        col.innerHTML = `
+            <div class="card h-100 shadow-sm border-0">
+                <div class="position-relative overflow-hidden">
+                    <img src="${thumbnail}" class="card-img-top project-image" alt="${project.name}" loading="lazy">
+                    <div class="project-overlay">
+                        <button class="btn btn-light btn-sm" onclick="viewProject('${project.name}')">
+                            <i class="fas fa-images me-1"></i> View Gallery
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">${project.name}</h5>
+                    <p class="card-text text-muted small">${project.description}</p>
+                    <span class="badge bg-light text-dark border">${project.category}</span>
+                </div>
+            </div>
+        `;
+        grid.appendChild(col);
+    });
+
+    initializeProjectFilters();
+}
+
+function initializeProjectFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterButtons.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            projectItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+}
+
+// Make viewProject available globally
+window.viewProject = function(projectName) {
+    const project = projectsData.find(p => p.name === projectName);
+    if (!project) return;
+
+    // Create modal dynamically if it doesn't exist
+    let modal = document.getElementById('projectGalleryModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'projectGalleryModal';
+        modal.className = 'modal fade';
+        modal.setAttribute('tabindex', '-1');
+        modal.innerHTML = `
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title fw-bold"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <p class="project-description lead text-muted mb-4"></p>
+                        <div class="row g-3 gallery-grid"></div>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+
+    // Populate modal content
+    const modalTitle = modal.querySelector('.modal-title');
+    const modalDesc = modal.querySelector('.project-description');
+    const galleryGrid = modal.querySelector('.gallery-grid');
+
+    modalTitle.textContent = project.name;
+    modalDesc.textContent = project.description;
+    galleryGrid.innerHTML = '';
+
+    project.images.forEach(imageName => {
+        const col = document.createElement('div');
+        col.className = 'col-md-4 col-sm-6';
+        const imagePath = `../public/images/projects/${project.folder}/${imageName}`;
+        
+        col.innerHTML = `
+            <div class="gallery-item position-relative rounded overflow-hidden shadow-sm">
+                <img src="${imagePath}" class="img-fluid w-100" alt="${project.name}" loading="lazy" style="height: 250px; object-fit: cover;">
+            </div>
+        `;
+        galleryGrid.appendChild(col);
+    });
+
+    // Show modal
+    const bsModal = new bootstrap.Modal(modal);
+    bsModal.show();
+};
 
 // ============================================
 // Lazy Loading
