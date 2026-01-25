@@ -427,8 +427,9 @@ window.viewProject = function(projectName) {
         lightGalleryInstance = lightGallery(galleryHost, {
             dynamic: true,
             dynamicEl: dynamicItems,
-            plugins: [lgThumbnail],
+            plugins: [lgThumbnail, lgAutoplay, lgFullscreen],
             thumbnail: true,
+            autoplay: true,
             download: false
         });
     }
