@@ -4,6 +4,7 @@
 
 // Global variables
 let swiperInstance = null;
+let lightGalleryInstance = null;
 const projectsData = [];
 
 // Initialize on DOM load
@@ -303,7 +304,7 @@ function loadSliderImages() {
         displayImages.forEach(imageName => {
             const slide = document.createElement('div');
             slide.className = 'swiper-slide';
-            const imagePath = `public/images/projects/${project.folder}/${imageName}`;
+            const imagePath = encodeURI(`public/images/projects/${project.folder}/${imageName}`);
             
             slide.innerHTML = `
                 <img src="${imagePath}" 
@@ -342,7 +343,7 @@ function loadProjectsGrid() {
         
         // Use first image as thumbnail, or placeholder
         const thumbnail = project.images.length > 0 
-            ? `../public/images/projects/${project.folder}/${project.images[0]}`
+            ? encodeURI(`../public/images/projects/${project.folder}/${project.images[0]}`)
             : 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop';
 
         col.innerHTML = `
@@ -400,60 +401,39 @@ function initializeProjectFilters() {
     });
 }
 
-// Make viewProject available globally
 window.viewProject = function(projectName) {
     const project = projectsData.find(p => p.name === projectName);
     if (!project) return;
 
-    // Create modal dynamically if it doesn't exist
-    let modal = document.getElementById('projectGalleryModal');
-    if (!modal) {
-        modal = document.createElement('div');
-        modal.id = 'projectGalleryModal';
-        modal.className = 'modal fade';
-        modal.setAttribute('tabindex', '-1');
-        modal.innerHTML = `
-            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header border-0">
-                        <h5 class="modal-title fw-bold"></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body p-4">
-                        <p class="project-description lead text-muted mb-4"></p>
-                        <div class="row g-3 gallery-grid"></div>
-                    </div>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(modal);
-    }
-
-    // Populate modal content
-    const modalTitle = modal.querySelector('.modal-title');
-    const modalDesc = modal.querySelector('.project-description');
-    const galleryGrid = modal.querySelector('.gallery-grid');
-
-    modalTitle.textContent = project.name;
-    modalDesc.textContent = project.description;
-    galleryGrid.innerHTML = '';
-
-    project.images.forEach(imageName => {
-        const col = document.createElement('div');
-        col.className = 'col-md-4 col-sm-6';
-        const imagePath = `../public/images/projects/${project.folder}/${imageName}`;
-        
-        col.innerHTML = `
-            <div class="gallery-item position-relative rounded overflow-hidden shadow-sm">
-                <img src="${imagePath}" class="img-fluid w-100" alt="${project.name}" loading="lazy" style="height: 250px; object-fit: cover;">
-            </div>
-        `;
-        galleryGrid.appendChild(col);
+    const dynamicItems = project.images.map(imageName => {
+        const imagePath = encodeURI(`../public/images/projects/${project.folder}/${imageName}`);
+        return {
+            src: imagePath,
+            thumb: imagePath,
+            subHtml: `<h4>${project.name}</h4><p>${project.description}</p>`
+        };
     });
 
-    // Show modal
-    const bsModal = new bootstrap.Modal(modal);
-    bsModal.show();
+    let galleryHost = document.getElementById('lightgallery-dynamic');
+    if (!galleryHost) {
+        galleryHost = document.createElement('div');
+        galleryHost.id = 'lightgallery-dynamic';
+        document.body.appendChild(galleryHost);
+    }
+
+    if (lightGalleryInstance) {
+        lightGalleryInstance.refresh(dynamicItems);
+    } else {
+        lightGalleryInstance = lightGallery(galleryHost, {
+            dynamic: true,
+            dynamicEl: dynamicItems,
+            plugins: [lgThumbnail],
+            thumbnail: true,
+            download: false
+        });
+    }
+
+    lightGalleryInstance.openGallery(0);
 };
 
 // ============================================
