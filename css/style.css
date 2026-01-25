@@ -1392,3 +1392,157 @@ a:hover {
     width: 100%;
     height: auto;
 }
+
+/* ────────────────────────────────────────────────
+   MODERN UTILITIES & KAUFMANN STYLE SECTIONS
+   ──────────────────────────────────────────────── */
+.bg-primary-gradient {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-brand-color) 100%);
+}
+
+.fw-800 {
+    font-weight: 800 !important;
+}
+
+.text-primary-brand {
+    color: var(--primary-brand-color) !important;
+}
+
+.text-accent {
+    color: var(--accent-color) !important;
+}
+
+.max-width-700 {
+    max-width: 700px;
+}
+
+/* Quote Bar */
+.quote-bar {
+    z-index: 10;
+    position: relative;
+}
+
+.quote-bar .btn-light {
+    color: var(--primary-brand-color);
+    font-weight: 700;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.quote-bar .btn-light:hover {
+    transform: scale(1.05);
+    background-color: var(--white);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* About Kaufmann Style */
+.about-kaufmann-style .list-unstyled li {
+    font-weight: 500;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+}
+
+.quote-call-box {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.stat-item h2 {
+    font-size: 2.2rem;
+}
+
+/* Project Cards (Kaufmann Style) */
+.project-k-card {
+    transition: all 0.4s ease;
+    border-radius: 15px;
+}
+
+.project-k-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(74, 20, 140, 0.15) !important;
+}
+
+.project-k-card img {
+    height: 240px;
+    object-fit: cover;
+}
+
+.link-with-arrow {
+    color: var(--primary-brand-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.link-with-arrow:hover {
+    color: var(--accent-color);
+}
+
+.link-with-arrow i {
+    transition: transform 0.3s ease;
+}
+
+.link-with-arrow:hover i {
+    transform: translateX(5px);
+}
+
+/* Feature Boxes */
+.feature-box {
+    background: var(--white);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.feature-box:hover {
+    border-color: var(--accent-color) !important;
+    transform: translateY(-5px);
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Client Logos Grid */
+.client-logo-box {
+    transition: all 0.3s ease;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.client-logo-box:hover {
+    filter: grayscale(0);
+    opacity: 1;
+    transform: scale(1.08);
+}
+
+.client-logo-box img {
+    max-height: 60px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.client-icon-placeholder {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
