@@ -353,7 +353,7 @@ function loadProjectsGrid() {
 
     projectsData.forEach(project => {
         const col = document.createElement('div');
-        col.className = 'col-md-4 project-item';
+        col.className = 'col-lg-4 col-md-6 project-item';
         col.setAttribute('data-category', project.category);
 
         // Use first image as thumbnail, or placeholder
@@ -362,23 +362,18 @@ function loadProjectsGrid() {
             : 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop';
 
         col.innerHTML = `
-            <div class="card h-100 shadow-sm border-0">
-                <div class="position-relative overflow-hidden">
-                    <img src="${thumbnail}" 
-                         class="card-img-top project-image" 
-                         alt="${project.name}" 
-                         loading="lazy"
-                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop'">
-                    <div class="project-overlay">
-                        <button class="btn btn-light btn-sm" onclick="viewProject('${project.name}')">
-                            <i class="fas fa-images me-1"></i> View Gallery
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">${project.name}</h5>
-                    <p class="card-text text-muted small">${project.description}</p>
-                    <span class="badge bg-light text-dark border">${project.category}</span>
+            <div class="project-card">
+                <img src="${thumbnail}" 
+                     alt="${project.name}" 
+                     loading="lazy"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop'">
+                <div class="project-card-overlay">
+                    <span class="project-card-category">${project.category}</span>
+                    <h3 class="project-card-title">${project.name}</h3>
+                    <p class="project-card-location"><i class="fas fa-map-marker-alt me-2"></i> ${project.description}</p>
+                    <button class="project-card-btn" onclick="viewProject('${project.name}')">
+                        <i class="fas fa-expand-alt me-2"></i> Explore Project
+                    </button>
                 </div>
             </div>
         `;
