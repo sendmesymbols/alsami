@@ -312,7 +312,7 @@ function loadSliderImages() {
     sliderContainer.innerHTML = '';
 
     // Add slides for each project (up to 4 images per project)
-    projectsData.forEach((project) => {
+    projectsData.filter(p => p.show_on_main_page === 1).forEach((project) => {
         // Take first 4 images, or all if less than 4
         const displayImages = project.images.slice(0, 4);
 
