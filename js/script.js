@@ -289,6 +289,21 @@ async function loadProjectsData() {
     loadProjectsGrid();
 }
 
+/**
+ * Helper to get correctly encoded path for project images
+ * Handles root vs pages directory and special characters like ()
+ */
+function getProjectImagePath(projectFolder, imageName) {
+    const isRootPage = !window.location.pathname.includes('/pages/');
+    const prefix = isRootPage ? '' : '../';
+    const path = `public/images/projects/${projectFolder}/${imageName}`;
+
+    // encodeURI handles spaces but not parentheses. We encode everything properly.
+    return encodeURI(prefix + path)
+        .replace(/\(/g, '%28')
+        .replace(/\)/g, '%29');
+}
+
 function loadSliderImages() {
     const sliderContainer = document.querySelector('.swiper-wrapper');
     if (!sliderContainer) return;
@@ -300,17 +315,17 @@ function loadSliderImages() {
     projectsData.forEach((project) => {
         // Take first 4 images, or all if less than 4
         const displayImages = project.images.slice(0, 4);
-        
+
         displayImages.forEach(imageName => {
             const slide = document.createElement('div');
             slide.className = 'swiper-slide';
-            const imagePath = encodeURI(`public/images/projects/${project.folder}/${imageName}`);
-            
+            const imagePath = getProjectImagePath(project.folder, imageName);
+
             slide.innerHTML = `
                 <img src="${imagePath}" 
                      alt="${project.name}" 
                      loading="lazy"
-                     onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=600&fit=crop'">
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=600&fit=crop'">
                 <div class="swiper-caption animated-caption">
                     <h3 class="slide-title">${project.name}</h3>
                     <p class="slide-desc">${project.description}</p>
@@ -340,16 +355,20 @@ function loadProjectsGrid() {
         const col = document.createElement('div');
         col.className = 'col-md-4 project-item';
         col.setAttribute('data-category', project.category);
-        
+
         // Use first image as thumbnail, or placeholder
-        const thumbnail = project.images.length > 0 
-            ? encodeURI(`../public/images/projects/${project.folder}/${project.images[0]}`)
+        const thumbnail = project.images.length > 0
+            ? getProjectImagePath(project.folder, project.images[0])
             : 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop';
 
         col.innerHTML = `
             <div class="card h-100 shadow-sm border-0">
                 <div class="position-relative overflow-hidden">
-                    <img src="${thumbnail}" class="card-img-top project-image" alt="${project.name}" loading="lazy">
+                    <img src="${thumbnail}" 
+                         class="card-img-top project-image" 
+                         alt="${project.name}" 
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop'">
                     <div class="project-overlay">
                         <button class="btn btn-light btn-sm" onclick="viewProject('${project.name}')">
                             <i class="fas fa-images me-1"></i> View Gallery
@@ -401,12 +420,12 @@ function initializeProjectFilters() {
     });
 }
 
-window.viewProject = function(projectName) {
+window.viewProject = function (projectName) {
     const project = projectsData.find(p => p.name === projectName);
     if (!project) return;
 
     const dynamicItems = project.images.map(imageName => {
-        const imagePath = encodeURI(`../public/images/projects/${project.folder}/${imageName}`);
+        const imagePath = getProjectImagePath(project.folder, imageName);
         return {
             src: imagePath,
             thumb: imagePath,
