@@ -1400,6 +1400,22 @@ a:hover {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-brand-color) 100%);
 }
 
+.bg-primary-light {
+    background-color: var(--primary-light) !important;
+}
+
+.bg-primary-dark {
+    background-color: var(--primary-dark) !important;
+}
+
+.bg-accent {
+    background-color: var(--accent-color) !important;
+}
+
+.text-white-force {
+    color: var(--white) !important;
+}
+
 .fw-800 {
     font-weight: 800 !important;
 }
