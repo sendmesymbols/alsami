@@ -827,16 +827,16 @@ a:hover {
 
 .swiper-caption {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%);
-    padding: 40px 30px 25px;
+    bottom: 30px;
+    left: 30px;
+    right: auto;
+    width: auto;
+    max-width: 80%;
+    background: transparent;
     color: var(--white);
     z-index: 2;
-    border-left: 5px solid var(--accent-color);
     transform: translateY(0);
-    transition: transform 0.4s ease;
+    transition: all 0.4s ease;
 }
 
 .swiper-slide:not(.swiper-slide-active) .swiper-caption {
@@ -1077,36 +1077,40 @@ a:hover {
 
 /* --- ANIMATED CAPTION & MODERN SLIDER ENHANCEMENTS --- */
 .animated-caption {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    border-left: 5px solid var(--primary-brand-color);
-    padding: 30px;
-    border-radius: 0 10px 10px 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 4px solid var(--primary-brand-color);
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .animated-caption .slide-title {
     color: var(--primary-brand-color);
-    font-size: 2rem;
+    font-size: 1.25rem;
     font-weight: 800;
-    margin-bottom: 10px;
+    margin-bottom: 4px;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(15px);
     animation: fadeInUp 0.8s ease forwards 0.3s;
 }
 
 .animated-caption .slide-desc {
     color: var(--text-dark);
-    font-size: 1.1rem;
-    margin-bottom: 15px;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(15px);
     animation: fadeInUp 0.8s ease forwards 0.5s;
 }
 
 .animated-caption .badge {
+    font-size: 0.65rem;
+    padding: 4px 10px;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(15px);
     animation: fadeInUp 0.8s ease forwards 0.7s;
 }
 
