@@ -321,12 +321,7 @@ function loadSliderImages() {
             slide.className = 'swiper-slide';
             const imagePath = getProjectImagePath(project.folder, imageName);
 
-            // Clean up description
-            let displayDescription = project.description;
-            const locationIndex = displayDescription.indexOf('Location:');
-            if (locationIndex !== -1) {
-                displayDescription = displayDescription.substring(locationIndex);
-            }
+
 
             slide.innerHTML = `
                 <img src="${imagePath}" 
@@ -335,7 +330,8 @@ function loadSliderImages() {
                      onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=600&fit=crop'">
                 <div class="swiper-caption animated-caption">
                     <h3 class="slide-title">${project.name}</h3>
-                    <p class="slide-desc">${displayDescription}</p>
+                    <p class="slide-desc">${project.description}</p>
+                    <p class="slide-location"><i class="fas fa-map-marker-alt me-1"></i> ${project.location}</p>
                     <span class="badge bg-accent mt-2">${project.category.toUpperCase()}</span>
                 </div>
             `;
@@ -368,13 +364,6 @@ function loadProjectsGrid() {
             ? getProjectImagePath(project.folder, project.images[0])
             : 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop';
 
-        // Clean up description if it repeats the name and contains "Location:"
-        let displayDescription = project.description;
-        const locationIndex = displayDescription.indexOf('Location:');
-        if (locationIndex !== -1) {
-            displayDescription = displayDescription.substring(locationIndex);
-        }
-
         col.innerHTML = `
             <div class="project-card">
                 <img src="${thumbnail}" 
@@ -384,7 +373,8 @@ function loadProjectsGrid() {
                 <div class="project-card-overlay">
                     <span class="project-card-category">${project.category}</span>
                     <h3 class="project-card-title">${project.name}</h3>
-                    <p class="project-card-location"><i class="fas fa-map-marker-alt me-2"></i> ${displayDescription}</p>
+                    <p class="project-card-desc text-white-50 small mb-2">${project.description}</p>
+                    <p class="project-card-location"><i class="fas fa-map-marker-alt me-2"></i> ${project.location}</p>
                     <button class="project-card-btn" onclick="viewProject('${project.name}')">
                         <i class="fas fa-expand-alt me-2"></i> Explore Project
                     </button>
@@ -438,7 +428,7 @@ window.viewProject = function (projectName) {
         return {
             src: imagePath,
             thumb: imagePath,
-            subHtml: `<h4>${project.name}</h4><p>${project.description}</p>`
+            subHtml: `<h4>${project.name}</h4><p>${project.description}</p><p><small><i class="fas fa-map-marker-alt me-1"></i> ${project.location}</small></p>`
         };
     });
 

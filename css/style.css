@@ -474,16 +474,24 @@ a:hover {
     color: var(--white);
 }
 
-.project-card-location {
-    font-size: 0.85rem;
-    opacity: 0.85;
-    margin-bottom: 20px;
+.project-card-desc {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 8px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.4;
+}
+
+.project-card-location {
+    font-size: 0.85rem;
+    opacity: 0.95;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+    font-weight: 600;
 }
 
 .project-card-btn {
@@ -873,6 +881,14 @@ a:hover {
     margin: 0;
     font-size: 1rem;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.slide-location {
+    font-size: 0.9rem;
+    color: var(--accent-color) !important;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    margin-top: 5px;
 }
 
 /* Modern Navigation Buttons */
