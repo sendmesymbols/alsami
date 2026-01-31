@@ -11,7 +11,6 @@ const projectsData = [];
 document.addEventListener('DOMContentLoaded', function () {
     loadComponents();
     initializeNavigation();
-    initializeSwiper();
     initializeLazyLoading();
     initializeFormHandlers();
     initializeSmoothScroll();
@@ -236,12 +235,15 @@ function initializeSwiper() {
     const swiperContainer = document.querySelector('.swiper');
     if (!swiperContainer) return;
 
-    swiperInstance = new Swiper('.swiper', {
+    swiperInstance = new Swiper('.project-slider', {
         autoplay: {
             delay: 6000,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
         },
+        observer: true,
+        observeParents: true,
+        watchSlidesProgress: true,
         loop: true,
         lazy: {
             loadPrevNext: true,
@@ -348,13 +350,28 @@ function loadSliderImages() {
         });
     });
 
-    // Reinitialize Swiper if it exists
-    if (swiperInstance) {
-        swiperInstance.update();
-    } else {
-        // Initialize Swiper if not already initialized
-        initializeSwiper();
+    // Safety check: If we have fewer than 2 slides, Swiper loop will fail.
+    // Duplicate slides if needed to ensure loop mode works.
+    const finalSlidesCount = sliderContainer.querySelectorAll('.swiper-slide').length;
+    if (finalSlidesCount === 1) {
+        const firstSlide = sliderContainer.querySelector('.swiper-slide');
+        const clone = firstSlide.cloneNode(true);
+        sliderContainer.appendChild(clone);
     }
+
+    // Initialize or Reinitialize Swiper
+    if (swiperInstance) {
+        swiperInstance.destroy(true, true);
+        swiperInstance = null;
+    }
+
+    // Small delay to ensure DOM is ready
+    setTimeout(() => {
+        initializeSwiper();
+        if (swiperInstance && swiperInstance.autoplay) {
+            swiperInstance.autoplay.start();
+        }
+    }, 100);
 }
 
 function loadProjectsGrid() {
@@ -437,7 +454,7 @@ window.viewProject = function (projectName) {
         return {
             src: imagePath,
             thumb: imagePath,
-            subHtml: `<h4>${project.name}</h4><p>${project.description}</p><p><small><i class="fas fa-map-marker-alt me-1"></i> ${project.location}</small></p>`
+            subHtml: `< h4 > ${project.name}</h4 ><p>${project.description}</p><p><small><i class="fas fa-map-marker-alt me-1"></i> ${project.location}</small></p>`
         };
     });
 
@@ -541,18 +558,18 @@ function isValidEmail(email) {
 function showAlert(message, type) {
     // Create alert element
     const alert = document.createElement('div');
-    alert.className = `alert alert-${type === 'success' ? 'success' : 'danger'}`;
+    alert.className = `alert alert - ${type === 'success' ? 'success' : 'danger'} `;
     alert.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 15px 20px;
-        background-color: ${type === 'success' ? '#28a745' : '#dc3545'};
-        color: white;
-        border-radius: 5px;
-        z-index: 9999;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    `;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background - color: ${type === 'success' ? '#28a745' : '#dc3545'};
+            color: white;
+            border - radius: 5px;
+            z - index: 9999;
+            box - shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            `;
     alert.textContent = message;
 
     document.body.appendChild(alert);
