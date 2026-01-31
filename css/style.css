@@ -178,109 +178,153 @@ a:hover {
     color: var(--white);
 }
 
-/* --- TOP BAR (NEW BUSINESS CARD STYLE) --- */
+/* --- TOP BAR (NEW BUSINESS CARD STYLE - REFINED) --- */
 .top-bar-new {
     background-color: var(--white);
-    padding: 20px 0 10px;
+    padding: 0;
+    overflow: hidden;
 }
 
-.company-name-strip {
+/* Full-width blue band across the header */
+.brand-blue-band {
     background-color: var(--primary-brand-color);
-    /* Matches existing brand color */
-    padding: 10px 20px;
-    margin-bottom: 0px;
-    /* Squeezed to the bar */
     width: 100%;
+    margin-top: 20px;
+    padding: 15px 0;
+    position: relative;
 }
 
-.company-name-strip h1 {
+.brand-blue-band h1 {
     color: var(--white) !important;
     font-family: 'Lora', serif;
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     font-weight: 700;
     margin: 0;
 }
 
 .sub-text-section {
-    padding: 5px 20px;
+    padding: 10px 0;
 }
 
 .engineers-text {
     font-family: 'Lora', serif;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     font-style: italic;
     font-weight: 700;
     color: var(--text-dark);
     margin: 0;
+    line-height: 1.2;
 }
 
 .construction-text {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--text-light);
-    font-weight: 500;
+    font-weight: 600;
     margin: 0;
+    line-height: 1.2;
 }
 
 .horizontal-divider-line {
-    height: 3px;
-    background-color: var(--primary-brand-color);
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.2);
     width: 100%;
-    margin: 8px 0;
+    margin: 10px 0;
 }
 
 .registration-row {
     display: flex;
-    gap: 40px;
-    padding: 0 20px;
+    justify-content: space-between;
+    padding-bottom: 15px;
+}
+
+.reg-item-container {
+    display: flex;
+    gap: 30px;
 }
 
 .reg-item {
-    font-size: 0.8rem;
-    font-weight: 800;
+    font-size: 1rem;
+    font-weight: 600;
     color: var(--text-dark);
 }
 
+.mofa-text {
+    color: #2e7d32 !important;
+    /* Professional Green */
+    font-weight: 700;
+}
+
+.underline-text {
+    text-decoration: underline;
+}
+
+/* Logo Overlap Logic */
+.logo-overlap-wrapper {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
 .logo-frame-container {
-    border: 1px solid #333;
+    border: 1.5px solid #444;
     padding: 10px;
     background: white;
-    margin-bottom: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: inline-block;
-    /* This makes it overlap the blue bar slightly if desired, or stay aligned */
-    margin-top: -10px;
-    position: relative;
-    z-index: 5;
 }
 
 .top-brand-logo {
-    max-height: 85px;
+    max-height: 110px;
     width: auto;
 }
 
 .ntn-text-under-logo {
-    font-size: 0.8rem;
-    font-weight: 800;
+    font-size: 1rem;
+    font-weight: 700;
     color: var(--text-dark);
+    margin-top: 8px;
+    text-align: right;
     padding-right: 5px;
 }
 
 @media (max-width: 991px) {
-    .top-bar-new {
+    .brand-blue-band {
+        padding: 10px 0;
+    }
+
+    .brand-blue-band h1 {
+        font-size: 1.4rem;
         text-align: center;
     }
 
-    .logo-frame-container {
-        margin-top: 20px;
+    .logo-overlap-wrapper {
+        position: static;
+        transform: none;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .sub-text-section {
+        text-align: center;
     }
 
     .registration-row {
-        justify-content: center;
         flex-direction: column;
-        gap: 5px;
+        align-items: center;
+        gap: 10px;
     }
 
-    .company-name-strip h1 {
-        font-size: 1.5rem;
+    .reg-item-container {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+
+    .ntn-text-under-logo {
+        text-align: center;
+        padding-right: 0;
     }
 }
 
