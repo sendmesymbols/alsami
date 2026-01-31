@@ -34,20 +34,32 @@ document.addEventListener('DOMContentLoaded', function () {
 // ============================================
 
 async function loadComponents() {
-    // Use pages/components for all pages
-    const isRootPage = !window.location.pathname.includes('/pages/');
+    // Determine page depth
+    const pathname = window.location.pathname;
+    const isRootPage = !pathname.includes('/pages/');
+    const isNestedPage = pathname.includes('/pages/products/') || pathname.includes('/pages/cities/');
+
+    // Determine path prefix for components
+    let componentPrefix = '';
+    if (isRootPage) {
+        componentPrefix = 'pages/components/';
+    } else if (isNestedPage) {
+        componentPrefix = '../../pages/components/';
+    } else {
+        componentPrefix = '../pages/components/';
+    }
 
     // Load header
     const headerPlaceholder = document.getElementById('header');
     if (headerPlaceholder) {
         try {
-            const headerPath = isRootPage ? 'pages/components/header.html' : '../pages/components/header.html';
+            const headerPath = componentPrefix + 'header.html';
             const response = await fetch(headerPath);
             if (response.ok) {
                 const html = await response.text();
                 headerPlaceholder.innerHTML = html;
                 // Fix paths based on current page location
-                fixComponentPaths(isRootPage);
+                fixComponentPaths(isRootPage, isNestedPage);
                 // Reinitialize navigation after header loads
                 setTimeout(() => {
                     initializeNavigation();
@@ -63,13 +75,13 @@ async function loadComponents() {
     const footerPlaceholder = document.getElementById('footer');
     if (footerPlaceholder) {
         try {
-            const footerPath = isRootPage ? 'pages/components/footer.html' : '../pages/components/footer.html';
+            const footerPath = componentPrefix + 'footer.html';
             const response = await fetch(footerPath);
             if (response.ok) {
                 const html = await response.text();
                 footerPlaceholder.innerHTML = html;
                 // Fix footer paths based on current page location
-                fixFooterPaths(isRootPage);
+                fixFooterPaths(isRootPage, isNestedPage);
             }
         } catch (error) {
             console.error('Error loading footer:', error);
@@ -77,7 +89,7 @@ async function loadComponents() {
     }
 }
 
-function fixComponentPaths(isRootPage) {
+function fixComponentPaths(isRootPage, isNestedPage) {
     // Fix header links and images based on page location
     const brandLink = document.querySelector('[data-nav-brand]');
     const brandImg = document.querySelector('[data-nav-logo]');
@@ -94,6 +106,7 @@ function fixComponentPaths(isRootPage) {
             products: 'pages/products.html',
             projects: 'pages/projects.html',
             gallery: 'pages/projects.html',
+            blog: 'pages/blog.html',
             'year-wise-summary': 'pages/year-wise-summary.html',
             contact: 'pages/contact.html'
         },
@@ -106,12 +119,29 @@ function fixComponentPaths(isRootPage) {
             products: 'products.html',
             projects: 'projects.html',
             gallery: 'projects.html',
+            blog: 'blog.html',
             'year-wise-summary': 'year-wise-summary.html',
             contact: 'contact.html'
+        },
+        nested: {
+            brand: '../../index.html',
+            logo: '../../public/images/logo.jpg',
+            home: '../../index.html',
+            about: '../about.html',
+            services: '../services.html',
+            products: '../products.html',
+            projects: '../projects.html',
+            gallery: '../projects.html',
+            blog: '../blog.html',
+            'year-wise-summary': '../year-wise-summary.html',
+            contact: '../contact.html'
         }
     };
 
-    const pathSet = isRootPage ? paths.root : paths.pages;
+    let pathSet;
+    if (isRootPage) pathSet = paths.root;
+    else if (isNestedPage) pathSet = paths.nested;
+    else pathSet = paths.pages;
 
     if (brandLink) brandLink.href = pathSet.brand;
     if (brandImg) brandImg.src = pathSet.logo;
@@ -127,15 +157,32 @@ function fixComponentPaths(isRootPage) {
     const dropdownItems = document.querySelectorAll('.dropdown-item');
     dropdownItems.forEach(item => {
         const href = item.getAttribute('href');
-        if (href && href.startsWith('pages/') && !isRootPage) {
-            // If we are in a subpage (isRootPage is false), remove 'pages/' prefix
-            // e.g. 'pages/heat-proofing.html' becomes 'heat-proofing.html'
-            item.href = href.replace('pages/', '');
+        if (!href) return;
+
+        if (isRootPage) {
+            // No changes needed for root
+        } else if (isNestedPage) {
+            // From pages/products/ to pages/*.html -> ../*.html
+            if (href.startsWith('pages/products/')) {
+                // If linking to another product from a product page
+                // href="pages/products/cool-shield.html" -> "cool-shield.html"
+                item.href = href.replace('pages/products/', '');
+            } else if (href.startsWith('pages/cities/')) {
+                item.href = href.replace('pages/', '../');
+            } else if (href.startsWith('pages/')) {
+                // Linking to normal pages: href="pages/about.html" -> "../about.html"
+                item.href = '../' + href.replace('pages/', '');
+            }
+        } else {
+            // From pages/ to pages/*.html -> *.html
+            if (href.startsWith('pages/')) {
+                item.href = href.replace('pages/', '');
+            }
         }
     });
 }
 
-function fixFooterPaths(isRootPage) {
+function fixFooterPaths(isRootPage, isNestedPage) {
     // Fix footer links based on page location
     const footerLinks = document.querySelectorAll('[data-footer-link]');
     const footerPdf = document.querySelector('[data-footer-pdf]');
@@ -156,7 +203,7 @@ function fixFooterPaths(isRootPage) {
             'services-pest': 'pages/pest-control-services.html',
             'services-furniture': 'pages/furniture-cleaning-services.html',
             'services-supplies': 'pages/general-supplies-equipment.html',
-            pdf: 'public/Al Sami Associates Pvt Ltd 2025.pdf'
+            pdf: 'public/product-sheets/Al Sami Associates Pvt Ltd 2025.pdf'
         },
         pages: {
             home: '../index.html',
@@ -173,11 +220,31 @@ function fixFooterPaths(isRootPage) {
             'services-pest': 'pest-control-services.html',
             'services-furniture': 'furniture-cleaning-services.html',
             'services-supplies': 'general-supplies-equipment.html',
-            pdf: '../public/Al Sami Associates Pvt Ltd 2025.pdf'
+            pdf: '../public/product-sheets/Al Sami Associates Pvt Ltd 2025.pdf'
+        },
+        nested: {
+            home: '../../index.html',
+            about: '../about.html',
+            services: '../services.html',
+            projects: '../projects.html',
+            contact: '../contact.html',
+            'services-construction': '../construction-renovation.html',
+            'services-roofing': '../roofing-protective-solutions.html',
+            'services-interior': '../interior-finishing-flooring.html',
+            'services-partition': '../partition-glass-work.html',
+            'services-plumbing': '../plumbing-sanitary-services.html',
+            'services-electrical': '../electrical-mechanical-works.html',
+            'services-pest': '../pest-control-services.html',
+            'services-furniture': '../furniture-cleaning-services.html',
+            'services-supplies': '../general-supplies-equipment.html',
+            pdf: '../../public/product-sheets/Al Sami Associates Pvt Ltd 2025.pdf'
         }
     };
 
-    const pathSet = isRootPage ? paths.root : paths.pages;
+    let pathSet;
+    if (isRootPage) pathSet = paths.root;
+    else if (isNestedPage) pathSet = paths.nested;
+    else pathSet = paths.pages;
 
     footerLinks.forEach(link => {
         const linkType = link.getAttribute('data-footer-link');
