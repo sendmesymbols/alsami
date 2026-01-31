@@ -3,6 +3,36 @@
    ============================================ */
 
 window.PROJECTS_DATA = {
+    "Faysal Bank": {
+        "name": "Remodeling & Renovation",
+        "folder": "Faysal Bank",
+        "category": "institutional",
+        "show_on_main_page": 1,
+        "description": "Professional remodeling, and renovation services, delivering durable and modern banking spaces.",
+        "location": "Abbottabad, Kahuta",
+        "images": [
+            "1.jpg",
+            "2.jpg",
+            "3.jpg",
+            "4.jpg",
+            "5.jpg",
+            "6.jpg",
+            "7.jpg",
+            "8.jpg",
+            "9.jpg",
+            "10.jpg",
+            "11.jpg",
+            "12.jpg",
+            "13.jpg",
+            "14.jpg",
+            "15.jpg",
+            "16.jpg",
+            "17.jpg",
+            "18.jpg",
+            "19.jpg"
+        ]
+    },
+
     "AIOU Construction": {
         "name": "Construction Of Paper Storage Space Building",
         "folder": "AIOU Construction",

@@ -1394,7 +1394,7 @@ a:hover {
 }
 
 /* ────────────────────────────────────────────────
-   MODERN UTILITIES & KAUFMANN STYLE SECTIONS
+   MODERN UTILITIES & Al Sami STYLE SECTIONS
    ──────────────────────────────────────────────── */
 .bg-primary-gradient {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-brand-color) 100%);
@@ -1452,8 +1452,8 @@ a:hover {
     box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
 }
 
-/* About Kaufmann Style */
-.about-kaufmann-style .list-unstyled li {
+/* About Al Sami Style */
+.about-sami-style .list-unstyled li {
     font-weight: 500;
     color: var(--text-dark);
     display: flex;
@@ -1468,7 +1468,7 @@ a:hover {
     font-size: 2.2rem;
 }
 
-/* Project Cards (Kaufmann Style) */
+/* Project Cards (Al Sami Style) */
 .project-k-card {
     transition: all 0.4s ease;
     border-radius: 15px;
