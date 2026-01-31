@@ -93,6 +93,8 @@ function fixComponentPaths(isRootPage) {
             services: 'pages/services.html',
             products: 'pages/products.html',
             projects: 'pages/projects.html',
+            gallery: 'pages/projects.html',
+            'year-wise-summary': 'pages/year-wise-summary.html',
             contact: 'pages/contact.html'
         },
         pages: {
@@ -103,6 +105,8 @@ function fixComponentPaths(isRootPage) {
             services: 'services.html',
             products: 'products.html',
             projects: 'projects.html',
+            gallery: 'projects.html',
+            'year-wise-summary': 'year-wise-summary.html',
             contact: 'contact.html'
         }
     };
@@ -189,7 +193,7 @@ function setActiveNavLink() {
             link.classList.add('active');
         } else if (currentPath.includes('services') && href.includes('services')) {
             link.classList.add('active');
-        } else if (currentPath.includes('projects') && href.includes('projects')) {
+        } else if ((currentPath.includes('projects') || currentPath.includes('year-wise-summary')) && href.includes('projects')) {
             link.classList.add('active');
         } else if (currentPath.includes('contact') && href.includes('contact')) {
             link.classList.add('active');

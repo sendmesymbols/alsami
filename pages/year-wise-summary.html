@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Year-wise project summaries of Al Sami Associates. Explore our construction and engineering achievements from 2022 to 2026.">
+    <title>Year Wise Summary | Al Sami Associates</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        .year-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .year-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-brand-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .year-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-brand-color), var(--accent-color));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .year-card:hover::before {
+            opacity: 1;
+        }
+
+        .year-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary-brand-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: transform 0.3s;
+        }
+
+        .year-card:hover .year-icon {
+            transform: scale(1.1);
+        }
+
+        .year-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .year-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-brand-color);
+            font-weight: 600;
+        }
+
+        .view-btn {
+            margin-top: 25px;
+            padding: 10px 25px;
+            border-radius: 50px;
+            background: var(--primary-brand-color);
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            border: none;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .year-card:hover .view-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .summary-intro {
+            background: var(--light-bg);
+            padding: 80px 0;
+            border-radius: 30px;
+            margin-top: -50px;
+            position: relative;
+            z-index: 5;
+            box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header will be loaded dynamically -->
+    <div id="header"></div>
+
+    <!-- Page Header -->
+    <section class="page-header text-center">
+        <div class="container" data-aos="fade-down">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <span class="badge bg-accent mb-3 text-uppercase fw-bold letter-spacing-2">Project Archives</span>
+                    <h1>Year Wise Summary</h1>
+                    <p class="lead text-white-50">Detailed reports and success milestones of Al Sami Associates projects
+                        from 2022 to 2026.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="section pt-0">
+        <div class="container">
+            <div class="summary-intro" data-aos="fade-up">
+                <div class="row px-4">
+                    <div class="col-lg-10 mx-auto text-center">
+                        <h2 class="section-title mb-4">Our Journey Through The Years</h2>
+                        <p class="lead mb-0">
+                            At Al Sami Associates, we believe in transparency and documenting our growth. Each year
+                            reflects our commitment to excellence, showcasing the diverse range of projects we've
+                            successfully delivered across Pakistan. Explore our yearly performance summaries, work
+                            orders, and completion certificates.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Year Links Section -->
+    <section class="section bg-white">
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+                <!-- 2022 Summary -->
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                    <a href="../public/project_summary_documents/Project Summary_Main_2022.pdf" target="_blank"
+                        class="year-card">
+                        <div class="year-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="year-label">Project Summary</div>
+                        <div class="year-number">2022</div>
+                        <button class="view-btn">View Document</button>
+                    </a>
+                </div>
+
+                <!-- 2023 Summary (Placeholder or Skip) -->
+                <!-- User mentioned 2022-2026, so I should probably show it even if missing, or just show what's there. 
+                     Since the PDF is missing, I'll show it as 'Information coming soon' or just skip. 
+                     Actually, I'll only show what exists to keep it functional. -->
+
+                <!-- 2024 Summary -->
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                    <a href="../public/project_summary_documents/Project Summary_Main_2024.pdf" target="_blank"
+                        class="year-card">
+                        <div class="year-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="year-label">Project Summary</div>
+                        <div class="year-number">2024</div>
+                        <button class="view-btn">View Document</button>
+                    </a>
+                </div>
+
+                <!-- 2025 Summary -->
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                    <a href="../public/project_summary_documents/Project Summary_Main_2025.pdf" target="_blank"
+                        class="year-card">
+                        <div class="year-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="year-label">Project Summary</div>
+                        <div class="year-number">2025</div>
+                        <button class="view-btn">View Document</button>
+                    </a>
+                </div>
+
+                <!-- 2026 Summary -->
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                    <a href="../public/project_summary_documents/Project Summary_Main_2026.pdf" target="_blank"
+                        class="year-card">
+                        <div class="year-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="year-label">Project Summary</div>
+                        <div class="year-number">2026</div>
+                        <button class="view-btn">View Document</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Note section -->
+            <div class="row mt-5" data-aos="fade-up">
+                <div class="col-lg-8 mx-auto">
+                    <div class="alert alert-info border-0 shadow-sm rounded-4 p-4 text-center">
+                        <i class="fas fa-info-circle me-2"></i>
+                        These documents provide a comprehensive overview of our technical capabilities, project
+                        timelines, and successful completions. For original copies or older archives, please contact our
+                        office.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer will be loaded dynamically -->
+    <div id="footer"></div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="../js/script.js"></script>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            easing: 'ease-in-out-cubic'
+        });
+    </script>
+</body>
+
+</html>
