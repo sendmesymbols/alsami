@@ -148,10 +148,14 @@ function fixFooterPaths(isRootPage) {
             projects: 'pages/projects.html',
             contact: 'pages/contact.html',
             'services-construction': 'pages/services.html#construction',
-            'services-renovation': 'pages/services.html#renovation',
-            'services-waterproofing': 'pages/services.html#waterproofing',
-            'services-heat-proofing': 'pages/services.html#heat-proofing',
-            'services-pest-control': 'pages/services.html#pest-control',
+            'services-roofing': 'pages/services.html#roofing',
+            'services-interior': 'pages/services.html#interior',
+            'services-partition': 'pages/services.html#partition',
+            'services-plumbing': 'pages/services.html#plumbing',
+            'services-electrical': 'pages/services.html#electrical',
+            'services-pest': 'pages/services.html#pest-control',
+            'services-furniture': 'pages/services.html#furniture',
+            'services-supplies': 'pages/services.html#supplies',
             pdf: 'public/Al Sami Associates Pvt Ltd 2025.pdf'
         },
         pages: {
@@ -161,10 +165,14 @@ function fixFooterPaths(isRootPage) {
             projects: 'projects.html',
             contact: 'contact.html',
             'services-construction': 'services.html#construction',
-            'services-renovation': 'services.html#renovation',
-            'services-waterproofing': 'services.html#waterproofing',
-            'services-heat-proofing': 'services.html#heat-proofing',
-            'services-pest-control': 'services.html#pest-control',
+            'services-roofing': 'services.html#roofing',
+            'services-interior': 'services.html#interior',
+            'services-partition': 'services.html#partition',
+            'services-plumbing': 'services.html#plumbing',
+            'services-electrical': 'services.html#electrical',
+            'services-pest': 'services.html#pest-control',
+            'services-furniture': 'services.html#furniture',
+            'services-supplies': 'services.html#supplies',
             pdf: '../public/Al Sami Associates Pvt Ltd 2025.pdf'
         }
     };
