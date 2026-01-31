@@ -2,6 +2,8 @@
    Al Sami Associates - Global Theming System
    ============================================ */
 
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 /* --- MASTER COLOR CONFIGURATION --- */
 :root {
     /* Primary Brand Color - Dark Purple from Logo */
@@ -176,63 +178,160 @@ a:hover {
     color: var(--white);
 }
 
-/* --- TOP BAR --- */
-.top-bar {
-    background-color: var(--primary-dark);
-    color: var(--white);
-    padding: 10px 0;
-    font-size: 0.9rem;
+/* --- TOP BAR (NEW BUSINESS CARD STYLE) --- */
+.top-bar-new {
+    background-color: var(--white);
+    padding: 20px 0 10px;
 }
 
-.top-bar a {
-    color: var(--white);
-    margin: 0 10px;
+.company-name-strip {
+    background-color: var(--primary-brand-color);
+    /* Matches existing brand color */
+    padding: 10px 20px;
+    margin-bottom: 0px;
+    /* Squeezed to the bar */
+    width: 100%;
 }
 
-.top-bar a:hover {
-    color: var(--accent-color);
+.company-name-strip h1 {
+    color: var(--white) !important;
+    font-family: 'Lora', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
 }
 
-.top-bar .social-links a {
-    margin: 0 8px;
+.sub-text-section {
+    padding: 5px 20px;
+}
+
+.engineers-text {
+    font-family: 'Lora', serif;
     font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.construction-text {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 500;
+    margin: 0;
+}
+
+.horizontal-divider-line {
+    height: 3px;
+    background-color: var(--primary-brand-color);
+    width: 100%;
+    margin: 8px 0;
+}
+
+.registration-row {
+    display: flex;
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.reg-item {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.logo-frame-container {
+    border: 1px solid #333;
+    padding: 10px;
+    background: white;
+    margin-bottom: 5px;
+    display: inline-block;
+    /* This makes it overlap the blue bar slightly if desired, or stay aligned */
+    margin-top: -10px;
+    position: relative;
+    z-index: 5;
+}
+
+.top-brand-logo {
+    max-height: 85px;
+    width: auto;
+}
+
+.ntn-text-under-logo {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    padding-right: 5px;
+}
+
+@media (max-width: 991px) {
+    .top-bar-new {
+        text-align: center;
+    }
+
+    .logo-frame-container {
+        margin-top: 20px;
+    }
+
+    .registration-row {
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .company-name-strip h1 {
+        font-size: 1.5rem;
+    }
 }
 
 /* ────────────────────────────────────────────────
    MODERN NAVIGATION (improved version)
    ──────────────────────────────────────────────── */
 .navbar {
-    background-color: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: var(--white);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     position: sticky;
     top: 0;
     z-index: 1000;
     transition: all 0.4s ease;
+    padding: 5px 0;
 }
 
 .navbar.scrolled {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-brand-color) 100%);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 6px 25px rgba(74, 20, 140, 0.25);
-    border-bottom: none;
+    background: var(--white);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-brand {
+.navbar-collapse {
+    justify-content: center;
+}
+
+.navbar-nav {
     display: flex;
-    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
-.navbar-brand img {
-    height: 55px;
-    width: auto;
-    transition: transform 0.4s ease;
+.navbar-nav .nav-link {
+    color: var(--text-dark);
+    font-weight: 600;
+    padding: 12px 20px !important;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+    border-radius: 4px;
 }
 
-.navbar-brand:hover img {
-    transform: scale(1.08);
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #1a237e;
+    background-color: rgba(26, 35, 126, 0.05);
 }
+
+.navbar.scrolled .navbar-nav .nav-link {
+    color: var(--text-dark);
+}
+
+/* removed navbar-brand as it's moved to top bar */
 
 .navbar-nav .nav-link {
     color: var(--text-dark);
