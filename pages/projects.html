@@ -23,41 +23,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/css/lightgallery-bundle.min.css">
 
     <style>
-        .projects-header {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-brand-color) 100%);
-            padding: 100px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .projects-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* background: url('../public/images/pattern.png'); */
-            /* If exists, if not just subtle overlay */
-            opacity: 0.1;
-            pointer-events: none;
-        }
-
-        .projects-header h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .projects-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
         /* Modern Filter Buttons */
         .project-filter {
             margin-top: -30px;
@@ -113,7 +78,7 @@
     <div id="header"></div>
 
     <!-- Page Header -->
-    <section class="projects-header text-white text-center">
+    <section class="page-header text-white text-center">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto fade-up">
@@ -125,6 +90,7 @@
             </div>
         </div>
     </section>
+    <br /><br />
 
     <!-- Projects Gallery -->
     <section class="projects-container">
