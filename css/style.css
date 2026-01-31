@@ -8,27 +8,35 @@
 :root {
     /* Primary Brand Color - Dark Purple from Logo */
     --primary-brand-color: #4A148C;
-    /* Main dark purple from logo */
     --primary-dark: #3D0F6F;
-    /* Darker variant */
     --primary-light: #7B2CBF;
-    /* Lighter variant */
     --accent-color: #9D4EDD;
-    /* Light purple accent */
+    --accent-gradient: linear-gradient(135deg, var(--primary-brand-color) 0%, var(--primary-light) 100%);
+
+    /* Luxury Palette Extensions */
+    --gold-accent: #D4AF37;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.3);
 
     /* Neutral Colors */
     --white: #ffffff;
-    --light-bg: #f8f9fa;
-    --text-dark: #1a1a1a;
-    --text-light: #6b7280;
-    --border-color: #e5e7eb;
+    --light-bg: #f8faff;
+    --text-dark: #0f172a;
+    --text-light: #64748b;
+    --border-color: #f1f5f9;
+
+    /* Shadows - Layered for depth */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-premium: 0 25px 50px -12px rgba(74, 20, 140, 0.15);
 
     /* Transitions */
-    --transition: all 0.3s ease-in-out;
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     /* Spacing */
-    --section-padding: 80px 0;
-    --container-padding: 15px;
+    --section-padding: 100px 0;
 }
 
 /* --- GLOBAL RESET & BASE STYLES --- */
@@ -136,58 +144,83 @@ a:hover {
 /* --- SECTION TITLES --- */
 .section-title {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
     position: relative;
-    padding-bottom: 1rem;
+}
+
+.section-title h2 {
+    color: var(--primary-brand-color);
+    font-size: 2.75rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .section-title::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
+    width: 60px;
     height: 4px;
-    background-color: var(--accent-color);
+    background: var(--accent-gradient);
     border-radius: 2px;
-}
-
-.section-title h2 {
-    color: var(--primary-brand-color);
-    margin-bottom: 0.5rem;
 }
 
 .section-subtitle {
     color: var(--text-light);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 /* --- BUTTONS --- */
 .btn {
-    padding: 12px 30px;
-    border-radius: 5px;
-    font-weight: 600;
+    padding: 14px 34px;
+    border-radius: 50px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     transition: var(--transition);
     border: none;
     cursor: pointer;
     display: inline-block;
+    font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .btn-primary {
-    background-color: var(--primary-brand-color);
+    background: var(--accent-gradient);
     color: var(--white);
-    border: 2px solid var(--primary-brand-color);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+    z-index: -1;
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-dark);
-    border-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-premium);
     color: var(--white);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(74, 20, 140, 0.3);
+}
+
+.btn-primary:hover::before {
+    width: 100%;
 }
 
 .btn-outline {
@@ -197,20 +230,23 @@ a:hover {
 }
 
 .btn-outline:hover {
-    background-color: var(--primary-brand-color);
+    background: var(--accent-gradient);
     color: var(--white);
+    border-color: transparent;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
 }
 
-.btn-download {
-    background-color: var(--accent-color);
-    color: var(--white);
-    border: 2px solid var(--accent-color);
+.btn-light {
+    background: var(--white);
+    color: var(--primary-brand-color);
+    box-shadow: var(--shadow-md);
 }
 
-.btn-download:hover {
-    background-color: var(--primary-light);
-    border-color: var(--primary-light);
-    color: var(--white);
+.btn-light:hover {
+    background: var(--light-bg);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
 }
 
 /* --- TOP BAR (NEW BUSINESS CARD STYLE - REFINED) --- */
@@ -598,6 +634,59 @@ a:hover {
 
 .section-light {
     background-color: var(--light-bg);
+}
+
+.bg-primary-gradient {
+    background: var(--accent-gradient) !important;
+}
+
+/* --- REFINED PROJECT CARDS --- */
+.project-k-card {
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+}
+
+.project-k-card:hover {
+    transform: translateY(-15px);
+    box-shadow: var(--shadow-premium);
+}
+
+.project-k-card img {
+    height: 260px;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.project-k-card:hover img {
+    transform: scale(1.1);
+}
+
+.project-k-card .card-body {
+    padding: 2.5rem 2rem;
+}
+
+.link-with-arrow {
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary-brand-color);
+    transition: var(--transition);
+}
+
+.link-with-arrow i {
+    transition: transform 0.3s ease;
+}
+
+.link-with-arrow:hover {
+    color: var(--primary-light);
+}
+
+.link-with-arrow:hover i {
+    transform: translateX(8px);
 }
 
 /* --- PROJECT CARDS (MODERN) --- */
@@ -1177,6 +1266,59 @@ a:hover {
     }
 }
 
+/* --- Feature Box / Pillar Box */
+.feature-box {
+    padding: 3.5rem 2.5rem !important;
+    background: var(--white);
+    border-radius: 30px !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent-gradient);
+    transform: scaleX(0);
+    transition: var(--transition);
+    transform-origin: left;
+}
+
+.feature-box:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+}
+
+.feature-box:hover::before {
+    transform: scaleX(1);
+}
+
+.icon-box {
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+}
+
+.feature-box:hover .icon-box {
+    transform: rotateY(360deg) scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
+
+.bg-primary-light {
+    background-color: #f3e8ff !important;
+    color: var(--primary-brand-color) !important;
+}
+
+.bg-primary-dark {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-brand-color) 100%) !important;
+}
+
 /* --- FORMS --- */
 .form-control {
     border: 2px solid var(--border-color);
@@ -1189,6 +1331,46 @@ a:hover {
     border-color: var(--primary-brand-color);
     box-shadow: 0 0 0 0.2rem rgba(74, 20, 140, 0.25);
     outline: none;
+}
+
+/* --- Testimonials --- */
+.testimonial-card {
+    padding: 3rem 2rem !important;
+    background: var(--white);
+    border-radius: 24px !important;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 5rem;
+    color: var(--primary-brand-color);
+    opacity: 0.1;
+    font-family: serif;
+    line-height: 1;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-premium);
+}
+
+.testimonial-card p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+.testimonial-card h6 {
+    color: var(--primary-brand-color);
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
 }
 
 /* --- RESPONSIVE --- */

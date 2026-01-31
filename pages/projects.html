@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/css/lightgallery-bundle.min.css">
 
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
         /* Modern Filter Buttons */
         .project-filter {
@@ -79,12 +82,13 @@
 
     <!-- Page Header -->
     <section class="page-header text-white text-center">
-        <div class="container">
+        <div class="container" data-aos="fade-down">
             <div class="row">
-                <div class="col-lg-8 mx-auto fade-up">
+                <div class="col-lg-8 mx-auto">
                     <span class="badge bg-accent mb-3 text-uppercase fw-bold letter-spacing-2">Portfolio</span>
                     <h1>Our Masterpieces</h1>
-                    <p class="lead">Exploring a legacy of excellence in construction, renovation, and institutional
+                    <p class="lead text-white-50">Exploring a legacy of excellence in construction, renovation, and
+                        institutional
                         development across Pakistan.</p>
                 </div>
             </div>
@@ -125,6 +129,17 @@
 
     <!-- Custom JS -->
     <script src="../js/script.js"></script>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            easing: 'ease-in-out-cubic'
+        });
+    </script>
 </body>
 
 </html>

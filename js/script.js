@@ -18,6 +18,16 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeMobileMenu();
     initializePDFDownload();
     loadProjectsData();
+
+    // Initialize AOS if available
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            easing: 'ease-in-out-cubic'
+        });
+    }
 });
 
 // ============================================
@@ -364,7 +374,7 @@ function loadProjectsGrid() {
             : 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop';
 
         col.innerHTML = `
-            <div class="project-card">
+            <div class="project-card" data-aos="fade-up" data-aos-delay="${(projectsData.indexOf(project) % 3) * 100}">
                 <img src="${thumbnail}" 
                      alt="${project.name}" 
                      loading="lazy"

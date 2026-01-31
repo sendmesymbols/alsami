@@ -20,6 +20,9 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -28,12 +31,12 @@
 
     <!-- Page Header -->
     <section class="page-header text-center">
-        <div class="container">
+        <div class="container" data-aos="fade-down">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <span class="badge bg-accent mb-3 text-uppercase fw-bold letter-spacing-2">Corporate Profile</span>
                     <h1>About Us</h1>
-                    <p class="lead">Providing Premium Quality Services Since 2014</p>
+                    <p class="lead text-white-50">Providing Premium Quality Services Since 2014</p>
                 </div>
             </div>
         </div>
@@ -57,25 +60,29 @@
                     </div>
 
                     <!-- CEO's Message -->
-                    <div class="mb-5">
-                        <h3 class="mb-3">CEO’s Message</h3>
-                        <p>
-                            I commenced my career in 2003 aimed to know about construction, engineering practices in
-                            Pakistan and abroad. Alhamdolilah my pursuit has a little bit satisfied me to start
-                            construction work as engineering professional. This is my aim to expatriate the weaknesses
-                            (i.e. delay of the project, low quality of work, technical mistakes etc) during the ongoing
-                            projects. Being a consultant, contractor and even a sub contractor I came across the
-                            conditions to drive a contractor to face such problems.
-                        </p>
-                        <p>
-                            We M/s Al Sami Associates (Private) Limited believe in virtue of incessant struggle and hard
-                            work. We highly value our clients who are the most essential part of the development process
-                            and we strive for having a long lasting relationship with them on the basis of mutual
-                            respect and harmony. It is expected that M/s Al Sami Associates (Private) Limited through
-                            dynamic business strategy, coupled with its excellent professional track-record is bound to
-                            bear fruit by the grace of Almighty Allah. May Allah help us to move forward and excel in
-                            all our endeavours. Ameen!
-                        </p>
+                    <div class="mb-5" data-aos="fade-up">
+                        <div class="p-5 bg-white rounded-4 shadow-premium border-start border-primary-brand border-5">
+                            <h3 class="mb-4 text-primary-brand">CEO’s Message</h3>
+                            <p class="lead italic text-dark mb-4">
+                                "We M/s Al Sami Associates (Private) Limited believe in virtue of incessant struggle and
+                                hard work."
+                            </p>
+                            <p>
+                                I commenced my career in 2003 aimed to know about construction, engineering practices in
+                                Pakistan and abroad. Alhamdolilah my pursuit has a little bit satisfied me to start
+                                construction work as engineering professional. This is my aim to expatriate the
+                                weaknesses
+                                (i.e. delay of the project, low quality of work, technical mistakes etc) during the
+                                ongoing
+                                projects.
+                            </p>
+                            <p>
+                                We highly value our clients who are the most essential part of the development process
+                                and we strive for having a long lasting relationship with them on the basis of mutual
+                                respect and harmony. May Allah help us to move forward and excel in all our endeavours.
+                                Ameen!
+                            </p>
+                        </div>
                     </div>
 
                     <!-- What The Company Does -->
@@ -91,32 +98,31 @@
 
                     <!-- Vision & Mission -->
                     <div class="row g-4 mb-5">
-                        <div class="col-md-6">
-                            <div class="p-4 bg-light rounded h-100">
-                                <h3 class="mb-3"><i class="fas fa-eye text-primary me-2"></i> Vision Statement</h3>
+                        <div class="col-md-6" data-aos="fade-right">
+                            <div class="feature-box h-100">
+                                <h3 class="mb-3 text-primary-brand"><i class="fas fa-eye me-2"></i> Our Vision</h3>
                                 <p>
-                                    We feel confident while sharing that M/s Al Sami Associates (Private) Limited
-                                    remains on course to become a world-class engineering organization, living up to
-                                    commitments and unstinted support of the employs.
+                                    M/s Al Sami Associates (Private) Limited remains on course to become a world-class
+                                    engineering organization, living up to commitments and unstinted support of the
+                                    employs.
                                 </p>
                                 <p>
                                     Our emergence as a contractor is aligned with a vision of progressing up the value
-                                    chain to a sustainable extent. This process of development shall remain under focus
-                                    during the coming years. For us what matters most is customer satisfaction which we
-                                    have to balance against our growth pattern.
+                                    chain to a sustainable extent. Customer satisfaction is what matters most to us.
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="p-4 bg-light rounded h-100">
-                                <h3 class="mb-3"><i class="fas fa-bullseye text-primary me-2"></i> Mission Statement
+                        <div class="col-md-6" data-aos="fade-left">
+                            <div class="feature-box h-100">
+                                <h3 class="mb-3 text-primary-brand"><i class="fas fa-bullseye me-2"></i> Our Mission
                                 </h3>
                                 <p>
-                                    M/s Al Sami Associates (Private) Limited is mandated to promote engineering practice
-                                    for construction of buildings professionally, highly skilled, skilled and un-skilled
-                                    manpower in construction field. In fulfilment of its mandate, the M/s Al Sami
-                                    Associates (Private) Limited has so far provided more efficient services to carry on
-                                    works at site for different engineering world.
+                                    To promote engineering practice for construction of buildings professionally, using
+                                    highly skilled and skilled manpower.
+                                </p>
+                                <p>
+                                    Providing efficient services to carry on works at site for different engineering
+                                    challenges, ensuring quality and excellence throughout Pakistan.
                                 </p>
                             </div>
                         </div>
@@ -436,6 +442,17 @@
 
     <!-- Custom JS -->
     <script src="../js/script.js"></script>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            easing: 'ease-in-out-cubic'
+        });
+    </script>
 </body>
 
 </html>
