@@ -332,7 +332,6 @@ function loadSliderImages() {
                     <h3 class="slide-title">${project.name}</h3>
                     <p class="slide-desc">${project.description}</p>
                     <p class="slide-location"><i class="fas fa-map-marker-alt me-1"></i> ${project.location}</p>
-                    <span class="badge bg-accent mt-2">${project.category.toUpperCase()}</span>
                 </div>
             `;
             sliderContainer.appendChild(slide);
