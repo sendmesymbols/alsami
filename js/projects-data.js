@@ -41,7 +41,26 @@ window.PROJECTS_DATA = {
         "description": "Construction Of Paper Storage Space Building",
         "location": "A.I.O.U. Main Campus Islamabad",
         "images": [
-            "AIOU Construction of Paper Storage Building (1).JPG", "AIOU Construction of Paper Storage Building (10).JPG", "AIOU Construction of Paper Storage Building (11).JPG", "AIOU Construction of Paper Storage Building (13).JPG", "AIOU Construction of Paper Storage Building (14).jpg", "AIOU Construction of Paper Storage Building (15).jpg", "AIOU Construction of Paper Storage Building (16).jpg", "AIOU Construction of Paper Storage Building (17).jpg", "AIOU Construction of Paper Storage Building (19).JPG", "AIOU Construction of Paper Storage Building (2).jpg", "AIOU Construction of Paper Storage Building (20).jpg", "AIOU Construction of Paper Storage Building (21).jpg", "AIOU Construction of Paper Storage Building (22).jpg", "AIOU Construction of Paper Storage Building (3).jpg", "AIOU Construction of Paper Storage Building (4).jpg", "AIOU Construction of Paper Storage Building (5).jpg", "AIOU Construction of Paper Storage Building (6).jpg", "AIOU Construction of Paper Storage Building (7).jpg", "AIOU Construction of Paper Storage Building (8).jpg", "AIOU Construction of Paper Storage Building (9).JPG"
+            "1.jpg",
+            "2.jpg",
+            "3.jpg",
+            "4.jpg",
+            "5.jpg",
+            "6.jpg",
+            "7.jpg",
+            "8.jpg",
+            "9.jpg",
+            "10.jpg",
+            "11.jpg",
+            "12.jpg",
+            "13.jpg",
+            "14.jpg",
+            "15.jpg",
+            "16.jpg",
+            "17.jpg",
+            "18.jpg",
+            "19.jpg",
+            "20.jpg",
         ]
     },
     "Bank Al Falah": {
@@ -51,7 +70,13 @@ window.PROJECTS_DATA = {
         "show_on_main_page": 0,
         "description": "Repair and Maintenance Work of Bank Alfalah",
         "location": "Jinnah Road Rawalpindi",
-        "images": ["Bank Al Falah (4).jpg", "Bank Al Falah (6).jpg", "Bank Al Falah (7).jpg", "Bank Al Falah (8).jpg", "Bank Al Falah (9).jpg"]
+        "images": [
+            "1.jpg",
+            "2.jpg",
+            "3.jpg",
+            "4.jpg",
+            "5.jpg",
+        ]
     },
     "CABI Mardan": {
         "name": "Renovation and Upgradation",
@@ -108,13 +133,34 @@ window.PROJECTS_DATA = {
         "images": ["1.jpg", "2.jpg", "3.jpg"]
     },
     "Minister Enclave": {
-        "name": "Renovation and Upgradation",
+        "name": "Minister\'s Enclave",
         "folder": "Minister Enclave",
         "category": "government",
         "show_on_main_page": 1,
         "description": "Renovation and Upgradation",
         "location": "Minister's Enclaves, Islamabad",
-        "images": ["IMG_20240419_115209_756.jpg", "IMG_20240419_115214_851.jpg", "IMG_20240419_115219_074.jpg", "IMG_20240424_145412_215.jpg", "IMG_20240430_141939_746.jpg", "IMG_20240430_144342_204.jpg", "IMG_20240430_144345_863.jpg", "IMG_20240430_161604_477.jpg", "IMG_20240501_133126_535.jpg", "IMG_20240501_133135_586.jpg", "IMG_20240509_102452_198.jpg", "IMG_20240509_161405_414.jpg", "IMG_20240509_161408_270.jpg", "IMG_20240509_161541_147.jpg", "IMG_20240512_084938_718.jpg", "IMG_20240512_084941_109.jpg", "IMG_20240512_084958_908.jpg", "IMG_20240512_085002_379.jpg", "IMG_20240512_085005_673.jpg", "IMG_20240512_085006_972.jpg"]
+        "images": [
+            "1.jpg",
+            "2.jpg",
+            "3.jpg",
+            "4.jpg",
+            "5.jpg",
+            "6.jpg",
+            "7.jpg",
+            "8.jpg",
+            "9.jpg",
+            "10.jpg",
+            "11.jpg",
+            "12.jpg",
+            "13.jpg",
+            "14.jpg",
+            "15.jpg",
+            "16.jpg",
+            "17.jpg",
+            "18.jpg",
+            "19.jpg",
+            "20.jpg"
+        ]
     },
     "MoFA Gym": {
         "name": "Renovation/Upgradation of Officer’s Gymnasium",
@@ -207,7 +253,7 @@ window.PROJECTS_DATA = {
         "images": ["1.jpg", "2.jpg", "3.jpg"]
     },
     "NIC": {
-        "name": "Renovation/Upgradation Works",
+        "name": "Renovation/Upgradation Works at NIC",
         "folder": "NIC",
         "category": "institutional",
         "show_on_main_page": 0,
@@ -234,7 +280,7 @@ window.PROJECTS_DATA = {
         "images": ["1.jpg", "2.jpg", "3.jpg", "4.jpg"]
     },
     "PCSIR": {
-        "name": "Renovation/Upgradation Works",
+        "name": "Renovation/Upgradation Works at PCSIR",
         "folder": "PCSIR",
         "category": "institutional",
         "show_on_main_page": 0,
@@ -252,7 +298,7 @@ window.PROJECTS_DATA = {
         "images": ["IMG_20210706_100550_376.jpg", "IMG_20210706_100607_725.jpg", "IMG_20210712_131847_678.jpg", "IMG_20210717_115149_952.jpg", "IMG_20210717_144135_675.jpg", "IMG_20210717_161626_072.jpg", "IMG_20210718_113322_898.jpg", "IMG_20210718_113324_461.jpg", "IMG_20210718_123559_572.jpg", "IMG_20210718_123605_646.jpg", "IMG_20210718_123609_722.jpg", "IMG_20210718_134100_738.jpg", "IMG_20210718_135447_048.jpg", "IMG_20210718_135451_264.jpg", "IMG_20210718_140022_352.jpg", "IMG_20210718_140035_525.jpg", "IMG_20210718_140039_573.jpg", "IMG_20210801_171214_630.jpg", "IMG_20210801_181321_149.jpg", "IMG_20210801_190129_064.jpg", "IMG_20210801_190134_920.jpg", "IMG_20210801_190145_600.jpg", "IMG_20210801_190147_390.jpg", "IMG_20210801_190954_908.jpg", "IMG_20210801_190958_942.jpg", "IMG_20210801_191003_602.jpg", "IMG_20210801_191009_658.jpg", "IMG_20210801_191012_021.jpg", "IMG_20210801_191029_780.jpg", "IMG_20210801_191031_287.jpg", "IMG_20210801_194358_887.jpg", "IMG_20210801_194401_901.jpg", "IMG_20210801_194402_713.jpg", "IMG_20210815_120518_111.jpg", "IMG_20210815_120520_350.jpg", "IMG_20210815_120523_398.jpg", "IMG_20210815_120539_559.jpg", "IMG_20210815_120551_211.jpg", "IMG_20210815_143733_213.jpg", "IMG_20210815_143735_228.jpg"]
     },
     "PCST": {
-        "name": "Renovation/Upgradation Works",
+        "name": "Renovation/Upgradation Works at PCST",
         "folder": "PCST",
         "category": "institutional",
         "show_on_main_page": 0,

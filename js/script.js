@@ -375,7 +375,7 @@ function loadProjectsGrid() {
                     <h3 class="project-card-title">${project.name}</h3>
                     <p class="project-card-desc text-white-50 small mb-2">${project.description}</p>
                     <p class="project-card-location"><i class="fas fa-map-marker-alt me-2"></i> ${project.location}</p>
-                    <button class="project-card-btn" onclick="viewProject('${project.name}')">
+                    <button class="project-card-btn" onclick="viewProject('${project.name.replace(/'/g, "\\'")}')">
                         <i class="fas fa-expand-alt me-2"></i> Explore Project
                     </button>
                 </div>
