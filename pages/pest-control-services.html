@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Best Pest Control and Fumigation Services in Pakistan by Al Sami Associates. Termite, bed bugs, cockroach, and rodent control solutions.">
+        content="Professional pest control and fumigation services in Pakistan by Al Sami Associates. Termite, bed bugs, and cockroach control using Fipro Star.">
     <title>Pest Control Services | Al Sami Associates</title>
 
     <!-- Bootstrap 5 CSS -->
@@ -20,6 +20,9 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -27,12 +30,13 @@
     <div id="header"></div>
 
     <!-- Page Header -->
-    <section class="section bg-primary text-white" style="padding: 60px 0;">
+    <section class="page-header text-center">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h1>Pest Control & Fumigation Services</h1>
-                    <p class="lead">Comprehensive Pest Control Solutions</p>
+                <div class="col-lg-8 mx-auto" data-aos="fade-up">
+                    <span class="badge bg-accent mb-3 text-uppercase fw-bold letter-spacing-2">Pest-Free Living</span>
+                    <h1 class="text-white-force" >Pest Control Services</h1>
+                    <p class="lead">Advanced fumigation and pest management for a healthier environment</p>
                 </div>
             </div>
         </div>
@@ -41,72 +45,115 @@
     <!-- Main Content -->
     <section class="section">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="mb-3">Comprehensive Fumigation Services</h2>
-                    <p>We offer Fumigation Services that are specifically designed for residential as well as commercial
-                        properties. Our most popular services include:</p>
-                    <ul>
-                        <li><strong>House fumigation services:</strong> Eliminate termites, bed bugs, cockroaches and
-                            rodents out of your home.</li>
-                        <li><strong>General Fumigation Services:</strong> Effective treatment for warehouses, offices
-                            and commercial structures.</li>
-                        <li><strong>Fumigation Home Service:</strong> A convenient on-site service that is customized to
-                            meet your specific home needs.</li>
-                        <li><strong>Wood Fumigation Services Near Me:</strong> Protect wooden furniture doors, walls,
-                            and structures from the damage caused by insects to wood.</li>
-                        <li><strong>Fumigation Clean-up Services:</strong> A thorough post-fumigation clean to create a
-                            safe and clean surroundings.</li>
-                    </ul>
-                    <p>We make use of the latest equipment and eco-friendly chemicals in order to offer a complete,
-                        pest-free service.</p>
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <img src="../public/images/pest-control-services.jpg" alt="Pest Control Services" class="img-fluid rounded-4 shadow-lg mb-4">
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="ps-lg-5">
+                        <h2 class="fw-bold mb-4">Complete Peace of Mind</h2>
+                        <p class="mb-4">Pests are not just a nuisance; they carry diseases and cause significant
+                            property damage. Al Sami Associates uses scientifically proven methods and premium products
+                            like "Fipro Star" to ensure your home and office remain pest-free.</p>
 
-                    <h2 class="mt-5 mb-3">Why Choose Us?</h2>
-                    <p>The choice of us for your Fumigation Services has several benefits:</p>
-                    <ul>
-                        <li><strong>Certified experts:</strong> Experienced and trained technicians will deliver results
-                            that are effective.</li>
-                        <li><strong>Eco-friendly treatments:</strong> Safe for children as well as pets and the natural
-                            environment.</li>
-                        <li><strong>Rapid and reliable service:</strong> Scheduled and emergency services are offered.
-                        </li>
-                        <li><strong>Affordable Cost:</strong> Transparent fumigation services are priced for businesses
-                            and homes.</li>
-                        <li><strong>Guaranteed Security:</strong> Long-lasting results to make sure your property is
-                            free of pests.</li>
-                    </ul>
+                        <div class="accordion accordion-flush" id="pestAccordion">
+                            <div class="accordion-item shadow-sm rounded-3 mb-3 border-0">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button rounded-3" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFumigation">
+                                        <i class="fas fa-biohazard text-primary-brand me-3"></i> Comprehensive
+                                        Fumigation
+                                    </button>
+                                </h2>
+                                <div id="collapseFumigation" class="accordion-collapse collapse show"
+                                    data-bs-parent="#pestAccordion">
+                                    <div class="accordion-body text-muted">
+                                        Customized treatments for houses, warehouses, and commercial buildings using
+                                        specialized gear and safe chemicals.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item shadow-sm rounded-3 mb-3 border-0">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed rounded-3" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseTermite">
+                                        <i class="fas fa-bug text-primary-brand me-3"></i> Termite Control
+                                    </button>
+                                </h2>
+                                <div id="collapseTermite" class="accordion-collapse collapse"
+                                    data-bs-parent="#pestAccordion">
+                                    <div class="accordion-body text-muted">
+                                        Pre-construction and post-construction termite proofing with long-term residue
+                                        protection for your foundations and woodwork.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item shadow-sm rounded-3 mb-3 border-0">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed rounded-3" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseGeneral">
+                                        <i class="fas fa-spider text-primary-brand me-3"></i> General Insect Control
+                                    </button>
+                                </h2>
+                                <div id="collapseGeneral" class="accordion-collapse collapse"
+                                    data-bs-parent="#pestAccordion">
+                                    <div class="accordion-body text-muted">
+                                        Targeted elimination of bed bugs, cockroaches, lizards, and rodents using
+                                        effective gel treatments and odor-free sprays.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                    <h2 class="mt-5 mb-3">Pest Control Services</h2>
-                    <p>Alongside fumigation, we offer extensive Pest Control Services to control a range of pests.</p>
+            <div class="row mt-5">
+                <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="fw-bold">Why Source Through Al Sami?</h2>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-box p-4 h-100 text-center border-0 shadow-premium">
+                        <div
+                            class="icon-box-sm bg-accent text-white rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-star fa-2x"></i>
+                        </div>
+                        <h5 class="fw-bold">Fipro Star Formula</h5>
+                        <p class="text-muted">We exclusively use Fipro Star, a premium professional product known for
+                            its safety and long-lasting efficacy.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-box p-4 h-100 text-center border-0 shadow-premium">
+                        <div
+                            class="icon-box-sm bg-primary-brand text-white rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-leaf fa-2x"></i>
+                        </div>
+                        <h5 class="fw-bold">Eco-Safe Solutions</h5>
+                        <p class="text-muted">Our treatments are safe for your family, pets, and the environment while
+                            being deadly for pests.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-box p-4 h-100 text-center border-0 shadow-premium">
+                        <div
+                            class="icon-box-sm bg-primary-light text-white rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-user-shield fa-2x"></i>
+                        </div>
+                        <h5 class="fw-bold">Certified Techs</h5>
+                        <p class="text-muted">All our technicians are trained and certified to handle specialized
+                            pesticides with utmost professional care.</p>
+                    </div>
+                </div>
+            </div>
 
-                    <h4 class="mt-4">Mosquito & Insect Control</h4>
-                    <ul>
-                        <li><strong>Mozzies Control Services:</strong> Stop mosquito-borne diseases at your workplace
-                            and in your home.</li>
-                        <li><strong>Mosquito Spray near Me:</strong> Immediate relief from mosquito-related
-                            infestations.</li>
-                        <li><strong>Insect Control Solutions Near Me:</strong> Removal of termites, cockroaches and many
-                            other insects.</li>
-                    </ul>
-
-                    <h4 class="mt-4">General Pest Control</h4>
-                    <ul>
-                        <li><strong>Pest Control Services:</strong> Custom solutions for commercial and residential
-                            areas.</li>
-                        <li><strong>Fast-acting treatments:</strong> For commercial and residential needs.</li>
-                        <li><strong>Nationwide coverage:</strong> Using environmentally friendly, highly efficient
-                            methods.</li>
-                    </ul>
-
-                    <h2 class="mt-5 mb-3">Our Product: "Fipro Star"</h2>
-                    <p>After experiencing many years, We just use our one product for the fumigation, we use this
-                        product and also recommend it because we have received the best results from our clients.
-                        Product Is <strong>“Fipro Star”</strong>.</p>
-
-                    <div class="mt-5 text-center">
-                        <h3>Call For a Quote</h3>
-                        <p class="h4 text-primary">+92 300 3432141</p>
-                        <a href="../pages/contact.html" class="btn btn-primary mt-3">Get Free Consultation</a>
+            <div class="row mt-5" data-aos="fade-up">
+                <div class="col-12">
+                    <div class="p-5 rounded-4 bg-primary-gradient text-white text-center">
+                        <h3 class="fw-bold mb-3 text-white">Need Urgent Pest Treatment?</h3>
+                        <p class="text-white-50 lead-sm mb-4">Don't let pests compromise your health or property. Get a
+                            professional inspection today.</p>
+                        <a href="contact.html" class="btn btn-light btn-lg px-5">Contact Us Now</a>
                     </div>
                 </div>
             </div>
@@ -119,8 +166,19 @@
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <!-- Custom JS -->
     <script src="../js/script.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            easing: 'ease-in-out-cubic'
+        });
+    </script>
 </body>
 
 </html>
